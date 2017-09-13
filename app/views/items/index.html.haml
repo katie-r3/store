@@ -13,6 +13,7 @@
         %td= item.name
         %td= item.price
         %td= item.description
+        %td= image_tag item.avatar(:thumb)
         %td= link_to 'View', item
         - if current_user && current_user.admin?
           %td= link_to 'Edit', edit_item_path(item)

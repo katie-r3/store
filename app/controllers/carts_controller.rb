@@ -16,6 +16,7 @@ class CartsController < ApplicationController
     render json: current_user.cart_count, status: 200
   end
 
+
   private
 
   def current_user_cart

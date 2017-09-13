@@ -10,6 +10,7 @@
       .column.large-2.text-center.p0{"data-equalizer-watch" => ""}
         = link_to item do
           = item.name
+          = image_tag item.avatar(:medium)
       .column.large-3.primary-bg.text-center.radius-r1{"data-equalizer-watch" => ""}
         = link_to "" , class: "remove", data: {targetUrl: remove_from_cart_path(item)} do
           Remove From Cart

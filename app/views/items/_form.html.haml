@@ -16,5 +16,8 @@
   .field
     = form.label :description
     = form.text_area :description, id: :item_description
+  .field
+    = form.label :avatar
+    = form.file_field :avatar, as: :file
   .actions
     = form.submit

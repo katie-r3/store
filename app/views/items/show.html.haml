@@ -9,6 +9,9 @@
   %strong Description:
   = @item.description
 
+%p
+  = image_tag @item.avatar(:medium)
+
   - if signed_in?
     = link_to "", class: "button", data: {target: @cart_action, addUrl: add_to_cart_path(@item), removeUrl: remove_from_cart_path(@item)} do
       %span= @cart_action

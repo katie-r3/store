@@ -43,6 +43,8 @@ gem 'devise'
 gem 'redis', ">= 2.2.0", :require => ['redis', 'redis/connection/hiredis']
 gem 'hiredis'
 
+gem 'paperclip', '~> 5.0.0'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
