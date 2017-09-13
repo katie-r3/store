@@ -12,15 +12,13 @@ class CartsController < ApplicationController
   end
 
   def remove
-    $redis.srem current_user_cart, params{:item_id}
+    $redis.srem current_user_cart, params[:item_id]
     render json: current_user.cart_count, status: 200
   end
-
 
   private
 
   def current_user_cart
     "cart#{current_user.id}"
   end
-
 end

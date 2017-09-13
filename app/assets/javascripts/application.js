@@ -10,52 +10,10 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery2
 //= require jquery-ui
+//= require foundation
 //= require rails-ujs
 //= require_tree .
 
-$(document).ready(function() {
-
-
-  return $('a[data-target]').click(function(e) {
-    var $this, new_target, url;
-    e.preventDefault();
-    $this = $(this);
-    if ($this.data('target') === 'Add to') {
-      url = $this.data('addurl');
-      new_target = "Remove from";
-    } else {
-      url = $this.data('removeurl');
-      new_target = "Add to";
-    }
-    return $.ajax({
-      url: url,
-      type: 'put',
-      success: function(data) {
-        $('.cart-count').html(data);
-        $this.find('span').html(new_target);
-        return $this.data('target', new_target);
-      }
-    });
-  });
-
-
-  $('#mycart .fi-x').click(function(e) {
-  var $this, url;
-  e.preventDefault();
-  $this = $(this).closest('a');
-  url = $this.data('targeturl');
-  return $.ajax({
-    url: url,
-    type: 'put',
-    success: function(data) {
-      $('.cart-count').html(data);
-      return $this.closest('.cart-item').slideUp();
-      if (data.status == 'ERROR') {
-        console.log("There was an error.")
-      }
-    }
-  });
-});
-
-});
+$(function(){ $(document).foundation(); });

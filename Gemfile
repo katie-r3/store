@@ -33,14 +33,14 @@ gem 'jbuilder', '~> 2.5'
 gem 'haml'
 gem 'haml-rails', '~> 1.0'
 
-gem 'jquery'
+gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
 gem 'foundation-rails'
 
 gem 'devise'
 
-gem 'redis'
+gem 'redis', ">= 2.2.0", :require => ['redis', 'redis/connection/hiredis']
 gem 'hiredis'
 
 # Use Capistrano for deployment

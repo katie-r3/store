@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy, :cart_action]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :is_admin?, only: [:edit, :update, :destroy]
 
   # GET /items
   # GET /items.json
@@ -10,6 +11,7 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
+    @item = Item.find(params[:id])
     @cart_action = @item.cart_action current_user.try :id
   end
 
@@ -63,6 +65,14 @@ class ItemsController < ApplicationController
   end
 
   private
+
+    def is_admin?
+      unless current_user.admin?
+        flash[:notice] = "Access denied! You aren't allowed to do that!"
+        redirect_to items_path
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_item
       @item = Item.find(params[:id])
@@ -72,4 +82,6 @@ class ItemsController < ApplicationController
     def item_params
       params.require(:item).permit(:name, :price, :description)
     end
+
+
 end

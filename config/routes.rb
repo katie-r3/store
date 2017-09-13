@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :admins
+  
+  get 'carts/show'
 
   resource :cart, only: [:show] do
     put 'add/:item_id', to: 'carts#add', as: :add_to
