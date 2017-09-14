@@ -1,25 +1,4 @@
-<div id="mycart" class="small-10 small-centered medium-8 large-8 column">
-  <div class="p1 glassy-bg mb1 text-center radius-l1 radius-r1">
-    <h4>My Cart</h4>
-    <p class="mb0"> You've selected <span class="cart-count"><%=current_user.cart_count%></span> items!</p>
-  </div>
-
-  <% @cart_items.each do |item|%>
-  <div data-equalizer class="cart-item large-12 column mb1">
-    <div class="column large-2 text-center p0" data-equalizer-watch>
-      <%=link_to item do%>
-        <%=image_tag item.image, class: "radius-l1"%>
-      <%end%>
-    </div>
-    <div class="column large-7 glassy-bg text-center" data-equalizer-watch>
-        <p class="scale ptm"> <%= item.name %> </p>
-    </div>
-    <div class="column large-3 primary-bg text-center radius-r1" data-equalizer-watch>
-      <%=link_to "" , class: "remove", data: {targetUrl: remove_from_cart_path(item)} do%>
-        Remove From Cart
-      <%end%>
-      <h4 class="scale">$ <%= item.price %></h4>
-    </div>
-  </div>
-  <%end%>
-</div>
+<%= form_for(@line_item,url:line_items_path(product_id:product)) do |f| %>
+       <%= f.select :quantity, options_for_select([1,2,3]) %>
+       <%= f.submit, 'Add to Cart', class: "btn btn-primary" %>
+ <% end %>

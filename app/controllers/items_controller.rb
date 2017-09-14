@@ -3,11 +3,12 @@ class ItemsController < ApplicationController
   before_action :is_admin?, only: [:edit, :update, :destroy]
 
   def is_admin?
-    unless current_user.admin?
+    if current_user.nil? || current_user.admin? == false
       flash[:notice] = "Access denied! You aren't allowed to do that!"
       redirect_to items_path
     end
   end
+
 
   # GET /items
   # GET /items.json
@@ -71,9 +72,19 @@ class ItemsController < ApplicationController
     end
   end
 
+  protected
+
+    def find_item
+      if id = Slug[params[:id]]
+        @item = Item.find(id)
+      else
+        @item = Item.find(params[:id])
+      end
+    rescue ActiveRecord::RecordNotFound
+      redirect_to root_path
+    end
+
   private
-
-
 
     # Use callbacks to share common setup or constraints between actions.
     def set_item
@@ -84,6 +95,8 @@ class ItemsController < ApplicationController
     def item_params
       params.require(:item).permit(:name, :price, :description, :avatar)
     end
+
+
 
 
 end

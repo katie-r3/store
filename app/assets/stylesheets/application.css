@@ -16,3 +16,12 @@
  *= require jquery-ui
 
  */
+
+ table {
+   margin-left: auto;
+   margin-right: auto;
+ }
+
+ h1.items_header {
+   text-align: center;
+ }

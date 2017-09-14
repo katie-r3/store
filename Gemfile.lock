@@ -52,6 +52,8 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    cartman (2.1.2)
+      redis
     childprocess (0.7.1)
       ffi (~> 1.0, >= 1.0.11)
     climate_control (0.2.0)
@@ -230,6 +232,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   capybara (~> 2.13)
+  cartman
   coffee-rails (~> 4.2)
   devise
   foundation-rails

@@ -16,3 +16,13 @@
           Remove From Cart
         %h4.scale
           $ #{item.price}
+
+
+.column.large-3.primary-bg.text-center.radius-r1{"data-equalizer-watch" => ""}
+  %h3.scale
+    Cart Total: $
+    = current_user.cart_total_price
+.column.large-3.primary-bg.text-center.radius-r1{"data-equalizer-watch" => ""}
+  %h3.scale
+    Total Items:
+    = @cart_items.size

@@ -45,6 +45,8 @@ gem 'hiredis'
 
 gem 'paperclip', '~> 5.0.0'
 
+gem 'cartman'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
