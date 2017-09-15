@@ -2,7 +2,7 @@
 
 Rails store application.
 
-Created with the use of:
+Created using:
 
 * Rails 5.1.4
 
@@ -10,7 +10,7 @@ Created with the use of:
 
 * Redis
 
-* Stripe(for receiving payment)
+* Stripe (for receiving payments)
 
 * MySql
 
@@ -18,7 +18,7 @@ Some future fixes:
 
 * User can only add one of each item at a time to their cart
 
-* Cart doesn't currently empty once user "pays"
+* Cart doesn't currently empty once user pays
 
 * ...
 
