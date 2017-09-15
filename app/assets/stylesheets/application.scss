@@ -1,0 +1,83 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require jquery-ui
+ *= require foundation_and_overrides
+ */
+
+table {
+   margin-left: auto;
+   margin-right: auto;
+}
+
+h1.items_header {
+   text-align: center;
+}
+
+ .item-show-links {
+   position: absolute;
+   width:300px;
+   height:200px;
+   z-index: 15;
+   top:75%;
+   margin-left: 460px;
+   margin-top: 35px;
+ }
+
+.item-show-info, {
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  z-index: 15;
+  top: 25%;
+  left: 50%;
+  margin: -100px 0 0 -150px;
+}
+
+.column.large-2 {
+  margin-bottom: 35px;
+}
+
+#totals {
+  margin-top: 45px;
+  margin-bottom: 35px;
+}
+
+#remove-button {
+  padding: 10%;
+  border: solid red 2px;
+}
+
+body {
+  text-decoration: none;
+}
+
+.search-empty {
+  margin-left: 800px;
+  margin-bottom: 25px;
+  padding-bottom: 50px;
+}
+
+.button.success {
+  margin-left: 250px;
+  margin-right: 875px;
+  padding: 5px;
+  margin-bottom: 50px;
+  text-decoration-color: white !important;
+
+}
+
+.content {
+  margin-top: 75px;
+}

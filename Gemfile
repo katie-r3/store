@@ -45,7 +45,9 @@ gem 'hiredis'
 
 gem 'paperclip', '~> 5.0.0'
 
-gem 'cartman'
+gem 'stripe'
+
+gem 'dotenv-rails', :groups => [:developement, :test]
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

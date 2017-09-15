@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+
+  resources :charges, only: [:new, :create]
+
   devise_for :admins
-  
+
   get 'carts/show'
 
   resource :cart, only: [:show] do
@@ -13,5 +16,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :items
+
+  get 'thanks', to: 'charges#thanks', as: 'thanks'
 
 end

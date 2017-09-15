@@ -13,4 +13,9 @@ class Item < ApplicationRecord
     end
   end
 
+  def self.search(search)
+    where("name LIKE ? OR description LIKE ?", "%#{search}", "%#{search}")
+  end
+
+
 end

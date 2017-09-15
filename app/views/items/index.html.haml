@@ -1,9 +1,20 @@
+.search-empty
+  - if @items.blank?
+    %h4 There are no items that match
+    = params[:search]
+
+
 %p#notice= notice
+
 %h1.items_header Items
+- if current_user && current_user.admin?
+  = link_to 'Add New Item', new_item_path, class: "button success"
+  
 %table
   %thead
     %tr
       %th Name
+      %th
       %th Price
       %th Description
       %th{:colspan => "3"}
@@ -11,13 +22,11 @@
     - @items.each do |item|
       %tr
         %td= link_to item.name, item
-        %td= (item.price.round(2), precision: 2)
-        %td= item.description
         %td= image_tag item.avatar(:thumb)
+        %td= sprintf "%.2f", item.price
+        %td= item.description
+
         - if current_user && current_user.admin?
           %td= link_to 'Edit', edit_item_path(item)
           %td= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' }
 %br/
-
-- if current_user && current_user.admin?
-  = link_to 'New Item', new_item_path

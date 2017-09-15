@@ -1,23 +1,26 @@
-%p#notice= notice
-%p
-  %strong Name:
-  = @item.name
-%p
-  %strong Price:
-  = @item.price
-%p
-  %strong Description:
-  = @item.description
+.item-show-info
+  %p#notice= notice
+  %p
+    %strong Name:
+    = @item.name
+  %p
+    %strong Price:
+    = sprintf "%.2f", @item.price
+  %p
+    %strong Description:
+    = @item.description
 
-%p
-  = image_tag @item.avatar(:medium)
+  %p
+    = image_tag @item.avatar(:medium)
 
-  - if signed_in?
-    = link_to "", class: "button", data: {target: @cart_action, addUrl: add_to_cart_path(@item), removeUrl: remove_from_cart_path(@item)} do
-      %span= @cart_action
-      Cart
+  #item-button
+    - if signed_in?
+      = link_to "", class: "button", data: {target: @cart_action, addUrl: add_to_cart_path(@item), removeUrl: remove_from_cart_path(@item)} do
+        %span= @cart_action
+        Cart
 
+.item-show-links
   - if current_user && current_user.admin?
     = link_to 'Edit', edit_item_path(@item)
-|
-= link_to 'Back', items_path
+    |
+  = link_to 'Back', items_path

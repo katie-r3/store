@@ -1,24 +1,25 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rails store application.
 
-Things you may want to cover:
+Created with the use of:
 
-* Ruby version
+* Rails 5.1.4
 
-* System dependencies
+* Ruby 2.4
 
-* Configuration
+* Redis
 
-* Database creation
+* Stripe(for receiving payment)
 
-* Database initialization
+* MySql
 
-* How to run the test suite
+Some future fixes:
 
-* Services (job queues, cache servers, search engines, etc.)
+* User can only add one of each item at a time to their cart
 
-* Deployment instructions
+* Cart doesn't currently empty once user "pays"
 
 * ...
+
+* Possibly add the ability for users to leave comments about the items, or ratings
