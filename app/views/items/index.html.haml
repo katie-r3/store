@@ -9,7 +9,7 @@
 %h1.items_header Items
 - if current_user && current_user.admin?
   = link_to 'Add New Item', new_item_path, class: "button success"
-  
+
 %table
   %thead
     %tr
@@ -21,7 +21,7 @@
   %tbody
     - @items.each do |item|
       %tr
-        %td= link_to item.name, item
+        %td.item-name= link_to item.name, item
         %td= image_tag item.avatar(:thumb)
         %td= sprintf "%.2f", item.price
         %td= item.description

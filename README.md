@@ -10,9 +10,9 @@ Created using:
 
 * Redis
 
-* Stripe (for receiving payments)
-
 * MySql
+
+* Stripe (for receiving payments)
 
 Some future fixes:
 

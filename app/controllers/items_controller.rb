@@ -27,6 +27,8 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @cart_action = @item.cart_action current_user.try :id
+    @comments = @item.comments.all
+    @comment = @item.comments.build
   end
 
   # GET /items/new

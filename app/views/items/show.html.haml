@@ -10,7 +10,7 @@
     %strong Description:
     = @item.description
 
-  %p
+  %p.image
     = image_tag @item.avatar(:medium)
 
   #item-button
@@ -24,3 +24,19 @@
     = link_to 'Edit', edit_item_path(@item)
     |
   = link_to 'Back', items_path
+
+
+  - if signed_in?
+    %h3.review-header Reviews
+    - @comments.each do |comment|
+      %div.reviews
+        %strong= comment.user_email
+        %br/
+        %p= comment.body
+      - if current_user.email == comment.user_email
+        = link_to 'Edit Comment', edit_comment_path(comment)
+        |
+        = link_to 'Delete Comment', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?'}
+        %br
+        %br
+    = render partial: 'comments/form', locals: { comment: @comment }
