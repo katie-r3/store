@@ -16,7 +16,7 @@ Created using:
 
 Some future fixes:
 
-* User can only add one of each item at a time to their cart
+* User cannot add more than one of each item to their cart
 
 * Cart doesn't currently empty once user pays
 
