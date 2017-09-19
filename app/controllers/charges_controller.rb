@@ -14,7 +14,6 @@ class ChargesController < ApplicationController
     charge = StripeTool.create_charge(customer_id: customer.id, amount: @amount, description: 'Rails Strip Customer')
 
     redirect_to thanks_path
-    $redis.srem current_user_cart, params[:item_id]
 
 
   rescue Stripe::CardError => e
@@ -25,10 +24,5 @@ class ChargesController < ApplicationController
   def thanks
   end
 
-  private
-
-  def current_user_cart
-    "cart#{current_user.id}"
-  end
 
 end
