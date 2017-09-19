@@ -10,7 +10,6 @@ class ItemsController < ApplicationController
   end
 
 
-
   # GET /items
   # GET /items.json
   def index

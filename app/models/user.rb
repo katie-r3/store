@@ -1,6 +1,5 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -21,7 +20,6 @@ class User < ApplicationRecord
     cart_ids = $redis.smembers "cart#{id}"
     Item.find(cart_ids)
   end
-
 
 
 end

@@ -14,7 +14,7 @@ Created using:
 
 * Stripe (for receiving payments)
 
-Some future fixes:
+Some future fixes/ideas:
 
 * User cannot add more than one of each item to their cart
 
@@ -22,4 +22,4 @@ Some future fixes:
 
 * ...
 
-* Possibly add the ability for users to leave comments about the items, or ratings
+* Possibly add the ability for users to leave ratings about the items, not just reviews

@@ -6,9 +6,9 @@
     $this = $(this)
     if $this.data('target') == 'Add to'
       url = $this.data('addurl')
-      new_target = "Remove from"
+      new_target = "Add another to"
     else
-      url = $this.data('removeurl')
+      url = $this.data('addurl')
       new_target = "Add to"
     $.ajax url: url, type: 'put', success: (data) ->
       $('.cart-count').html(data)
@@ -24,3 +24,11 @@
       $('.cart-count').html(data)
       $this.closest('.cart-item').slideUp()
       location.reload()
+
+
+  $('#remove-button').click (e) ->
+    e.preventDefault()
+    $this = $(this).closest('a')
+    url = $this.data('targeturl')
+    $.ajax url: url, type: 'put', success: (data) ->
+      $('.cart-count').html(data)

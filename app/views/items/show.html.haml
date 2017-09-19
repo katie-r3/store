@@ -15,9 +15,12 @@
 
   #item-button
     - if signed_in?
-      = link_to "", class: "button", data: {target: @cart_action, addUrl: add_to_cart_path(@item), removeUrl: remove_from_cart_path(@item)} do
+      = link_to "", class: "button", data: {target: @cart_action, addUrl: add_to_cart_path(@item), anotherUrl: add_to_cart_path(@item)} do
         %span= @cart_action
         Cart
+      = link_to "" , id: "remove-button" , class: "remove", data: {targetUrl: remove_from_cart_path(@item)} do
+        Remove
+
 
 .item-show-links
   - if current_user && current_user.admin?

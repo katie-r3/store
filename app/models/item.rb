@@ -6,13 +6,14 @@ class Item < ApplicationRecord
   has_many :buyers, through: :purchases
   has_many :comments
 
-  def cart_action(current_user_id)
-    if $redis.sismember "cart#{current_user_id}", id
-      "Remove from"
-    else
+  def cart_action(current_user)
+    if current_user
       "Add to"
+    else
+      "Add another to"
     end
   end
+
 
   def self.search(search)
     where("name LIKE ? OR description LIKE ?", "%#{search}", "%#{search}")
