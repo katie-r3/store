@@ -12,7 +12,7 @@ class CartsController < ApplicationController
   end
 
   def remove
-    $redis.lrem current_user_cart, -1, params[:item_id]
+    $redis.lrem current_user_cart, 1, params[:item_id]
     render json: current_user.cart_count, status: 200
   end
 

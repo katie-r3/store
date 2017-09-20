@@ -3,7 +3,8 @@
     %h3 My Cart
     %p.mb0
       You've selected
-      = pluralize(current_user.cart_count, 'item')
+      %strong
+        = pluralize(current_user.cart_count, 'item')
 
   - @cart_items.each do |item|
     .cart-item.large-12.column.mb1{"data-equalizer" => ""}
@@ -23,8 +24,8 @@
       .column.small-3.primary-bg.text-center.radius-r1{"data-equalizer-watch" => ""}
         %h5.scale Price per unit
         %h5.scale
-          $
-          = item.price
+          $ #{sprintf "%.2f", item.price}
+
       .column.small-3.primary-bg.text-center.radius-r1{"data-equalizer-watch" => ""}
         %h5.scale Quantity
         %h5.scale

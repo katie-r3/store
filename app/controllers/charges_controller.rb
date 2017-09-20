@@ -10,7 +10,6 @@ class ChargesController < ApplicationController
 
     customer = StripeTool.create_customer(email: params[:stripeEmail], stripe_token: params[:stripeToken])
 
-
     charge = StripeTool.create_charge(customer_id: customer.id, amount: @amount, description: 'Rails Strip Customer')
 
     redirect_to thanks_path
