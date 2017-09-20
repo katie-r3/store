@@ -14,13 +14,14 @@
           - 2.times do
             %br
         quantity:
-        = current_user.get_quantity(item)
+        = current_user.get_quantity(item.id)
 
         = link_to "" , id: "remove-button" , class: "remove", data: {targetUrl: remove_from_cart_path(item)} do
           Remove
       .column.large-3.primary-bg.text-center.radius-r1{"data-equalizer-watch" => ""}
         %h4.scale
-          $ #{sprintf "%.2f", item.price}
+          $
+          = item.price * current_user.get_quantity(item.id)
           %br
           %br
 
