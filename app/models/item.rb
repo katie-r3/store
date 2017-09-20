@@ -10,8 +10,6 @@ class Item < ApplicationRecord
   def cart_action(current_user)
     if current_user
       "Add to"
-    else
-      "Add another to"
     end
   end
 

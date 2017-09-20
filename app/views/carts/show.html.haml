@@ -1,6 +1,6 @@
 #mycart.small-10.small-centered.medium-8.large-8.column
   .p1.glassy-bg.mb1.text-center.radius-l1.radius-r1
-    %h4 My Cart
+    %h3 My Cart
     %p.mb0
       You've selected
       = pluralize(current_user.cart_count, 'item')
@@ -13,15 +13,27 @@
           = image_tag item.avatar(:medium)
           - 2.times do
             %br
-        quantity:
-        = current_user.get_quantity(item.id)
-
+        %br
         = link_to "" , id: "remove-button" , class: "remove", data: {targetUrl: remove_from_cart_path(item)} do
           Remove
-      .column.large-3.primary-bg.text-center.radius-r1{"data-equalizer-watch" => ""}
-        %h4.scale
+        %br
+        %br
+        = link_to "" , id: "add-button" , class: "add-to-cart", data: {targetUrl: add_to_cart_path(item)} do
+          Add More
+      .column.small-3.primary-bg.text-center.radius-r1{"data-equalizer-watch" => ""}
+        %h5.scale Price per unit
+        %h5.scale
           $
-          = item.price * current_user.get_quantity(item.id)
+          = item.price
+      .column.small-3.primary-bg.text-center.radius-r1{"data-equalizer-watch" => ""}
+        %h5.scale Quantity
+        %h5.scale
+          x
+          = current_user.get_quantity(item.id)
+      .column.large-3.primary-bg.text-center.radius-r1{"data-equalizer-watch" => ""}
+        %h4.scale Item Total
+        %h4.scale
+          $ #{sprintf "%.2f", (item.price * current_user.get_quantity(item.id))}
           %br
           %br
 
@@ -37,6 +49,6 @@
           #error_explanation
             %p= flash[:error]
         %label.amount
-          %span Amount Due: $
+          %span Cart Total: $
           = current_user.cart_total_price
       %script.stripe-button{"data-amount" => "{ @amount }", "data-description" => "Please complete your purchase", "data-key" => "#{Rails.configuration.stripe[:publishable_key]}", "data-email" => "#{current_user.email}", "data-locale" => "auto", :src => "https://checkout.stripe.com/checkout.js"}

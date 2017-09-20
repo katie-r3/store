@@ -66,11 +66,19 @@ h1.items_header {
 }
 
 #remove-button {
-  padding: 5%;
+  padding: 7%;
   border: solid red 2px;
   background-color: #F24949;
   color: white !important;
-  margin-left: 10px;
+  margin: 10px;
+}
+
+#add-button {
+  padding: 7%;
+  border: solid blue 2px;
+  background-color: #0000FF;
+  color: white !important;
+  margin: 10px;
 }
 
 body {
@@ -113,6 +121,11 @@ h3.review-header {
 
 #login-form, #signup-form, #edit-user-form, #new-item-form, #edit-item-form {
   margin: 200px;
+}
+
+.cart-item {
+  border: solid grey 2px;
+  margin: 3px;
 }
 
 .cancel-account {

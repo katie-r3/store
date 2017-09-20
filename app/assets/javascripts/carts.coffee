@@ -9,7 +9,7 @@
       new_target = "Add another to"
     else
       url = $this.data('addurl')
-      new_target = "Add to"
+      new_target = "Add to another to"
     $.ajax url: url, type: 'put', success: (data) ->
       $('.cart-count').html(data)
       $this.find('span').html(new_target)
@@ -32,3 +32,12 @@
     url = $this.data('targeturl')
     $.ajax url: url, type: 'put', success: (data) ->
       $('.cart-count').html(data)
+
+
+  $('#add-button').click (e) ->
+    e.preventDefault()
+    $this = $(this).closest('a')
+    url = $this.data('targeturl')
+    $.ajax url: url, type: 'put', success: (data) ->
+      $('.cart-count').html(data)
+      location.reload()
