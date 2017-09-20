@@ -21,5 +21,14 @@ class User < ApplicationRecord
     Item.find(cart_ids)
   end
 
+  def get_quantity(item)
+    ids = $redis.lrange "cart#{id}", -100, 100 # => ["2", "1"]
+    ids.each do |i|
+      if item.id == i
+        return ids.count(item)
+      end
+    end
+  end
+
 
 end

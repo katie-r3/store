@@ -13,7 +13,8 @@
           = image_tag item.avatar(:medium)
           - 2.times do
             %br
-
+        quantity:
+        = current_user.get_quantity(item)
 
         = link_to "" , id: "remove-button" , class: "remove", data: {targetUrl: remove_from_cart_path(item)} do
           Remove
@@ -37,4 +38,4 @@
         %label.amount
           %span Amount Due: $
           = current_user.cart_total_price
-      %script.stripe-button{"data-amount" => "{@amount}", "data-description" => "Please complete your purchase", "data-key" => "#{Rails.configuration.stripe[:publishable_key]}", "data-email" => "#{current_user.email}", "data-locale" => "auto", :src => "https://checkout.stripe.com/checkout.js"}
+      %script.stripe-button{"data-amount" => "{ @amount }", "data-description" => "Please complete your purchase", "data-key" => "#{Rails.configuration.stripe[:publishable_key]}", "data-email" => "#{current_user.email}", "data-locale" => "auto", :src => "https://checkout.stripe.com/checkout.js"}
