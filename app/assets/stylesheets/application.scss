@@ -16,6 +16,8 @@
  *= require foundation_and_overrides
  */
 
+@import url(https://fonts.googleapis.com/css?family=Asap+Condensed|IM+Fell+Great+Primer);
+
 
 body {
   background-color: #E8E8EE;
@@ -24,6 +26,7 @@ body {
 .image {
   padding: 1px;
   border: 1px solid #021a40;
+  background-color: white;
 }
 
 table {
@@ -188,7 +191,7 @@ top:1px;
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
-	font-family:Arial;
+	font-family:'Asap Condensed', sans-serif;
 	font-size:14px;
 	font-weight:bold;
 	padding:11px 23px;
@@ -249,4 +252,8 @@ top:1px;
 .search-button:active {
 	position:relative;
 	top:1px;
+}
+
+body, h1, h2, h3, .button {
+  font-family: 'IM Fell Great Primer', serif;
 }
