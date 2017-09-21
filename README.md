@@ -1,4 +1,4 @@
-# README
+# Store
 See it in action: https://intense-spire-74031.herokuapp.com/
 
 Rails store application.
@@ -16,6 +16,10 @@ Created using:
 * Stripe (for receiving payments)
 
 Some future fixes/ideas:
+
+* Styling could be better
+
+* Add sales tax, and the ability for users to enter their address. Right now they just buy items and that's the end
 
 * ...
 
