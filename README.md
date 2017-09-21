@@ -1,4 +1,5 @@
 # README
+See it in action: https://intense-spire-74031.herokuapp.com/
 
 Rails store application.
 
@@ -15,10 +16,6 @@ Created using:
 * Stripe (for receiving payments)
 
 Some future fixes/ideas:
-
-* User cannot add more than one of each item to their cart
-
-* Cart doesn't currently empty once user pays
 
 * ...
 
