@@ -4,7 +4,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :purchases, foreign_key: :buyer_id
-  has_many :items
+  has_many :items, through: :purchases
 
   def cart_count
     $redis.llen "cart#{id}"
@@ -28,6 +28,19 @@ class User < ApplicationRecord
         return ids.count(id)
       end
     end
+  end
+
+  def purchase_cart_items!
+    get_cart_items.each { |item| purchase?(item) }
+    $redis.del "cart#{id}"
+  end
+
+  def purchase(item)
+    items << item unless purchase?(item)
+  end
+
+  def purchase?(item)
+    items.include?(item)
   end
 
 end

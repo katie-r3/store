@@ -12,6 +12,7 @@ class ChargesController < ApplicationController
 
     charge = StripeTool.create_charge(customer_id: customer.id, amount: @amount, description: 'Rails Strip Customer')
 
+    current_user.purchase_cart_items!
     redirect_to thanks_path
 
 
