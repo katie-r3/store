@@ -5,8 +5,13 @@ class ChargesController < ApplicationController
   end
 
   def create
-    old_amt = current_user.cart_total_price.to_f * 100
-    @amount = old_amt.to_i
+    if current_user.state == 'CA'
+      old_amt = current_user.add_sales_tax.to_f * 100
+      @amount = old_amt.to_i
+    else
+      old_amt = current_user.cart_total_price.to_f * 100
+      @amount = old_amt.to_i
+    end
 
     customer = StripeTool.create_customer(email: params[:stripeEmail], stripe_token: params[:stripeToken])
 

@@ -6,6 +6,9 @@ class User < ApplicationRecord
   has_many :purchases, foreign_key: :buyer_id
   has_many :items, through: :purchases
 
+  before_save { |user| user.state = user.state.upcase! }
+
+
   def cart_count
     $redis.llen "cart#{id}"
   end
@@ -14,6 +17,12 @@ class User < ApplicationRecord
     total_price = 0
     get_cart_items.each { |item| total_price+= (item.price * get_quantity(item.id)) }
     sprintf("%.2f", total_price)
+  end
+
+  def add_sales_tax
+    tax = cart_total_price.to_f * (7.25 / 100)
+    total_price = tax + cart_total_price.to_f
+    return sprintf("%.2f", total_price)
   end
 
   def get_cart_items
@@ -42,5 +51,6 @@ class User < ApplicationRecord
   def purchase?(item)
     items.include?(item)
   end
+
 
 end

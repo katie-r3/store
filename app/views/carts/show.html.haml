@@ -5,7 +5,7 @@
       You've selected
       %strong
         = pluralize(current_user.cart_count, 'item')
-
+      !
   - @cart_items.each do |item|
     .cart-item.large-12.column.mb1{"data-equalizer" => ""}
       .column.large-2.text-center.p0{"data-equalizer-watch" => ""}
@@ -51,5 +51,9 @@
             %p= flash[:error]
         %label.amount
           %span Cart Total: $
-          = current_user.cart_total_price
-      %script.stripe-button{"data-amount" => "{ @amount }", "data-description" => "Please complete your purchase", "data-key" => "#{Rails.configuration.stripe[:publishable_key]}", "data-email" => "#{current_user.email}", "data-locale" => "auto", :src => "https://checkout.stripe.com/checkout.js"}
+          - if current_user.state == 'CA'
+            = current_user.add_sales_tax
+            %span.cart-total (7.25% Sales Tax added to California Residents)
+          - else
+            = current_user.cart_total_price
+        %script.stripe-button{"data-amount" => "{ @amount }", "data-description" => "Please complete your purchase", "data-key" => "#{Rails.configuration.stripe[:publishable_key]}", "data-email" => "#{current_user.email}", "data-locale" => "auto", :src => "https://checkout.stripe.com/checkout.js"}

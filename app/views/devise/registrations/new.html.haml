@@ -7,6 +7,10 @@
       %br/
       = f.email_field :email, autofocus: true
     .field
+      = f.label :state
+      %br/
+      = f.text_field :state
+    .field
       = f.label :password
       - if @minimum_password_length
         %em
@@ -19,4 +23,5 @@
       = f.password_field :password_confirmation, autocomplete: "off"
     .actions
       = f.submit "Sign up", class: "submit-buttons"
+  %p Already have an account?
   = render "devise/shared/links"
