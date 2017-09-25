@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :purchases, foreign_key: :buyer_id
   has_many :items, through: :purchases
 
-  before_save { |user| user.state = user.state.upcase! }
+  # before_save { |user| user.state = user.state.upcase! }
 
 
   def cart_count
