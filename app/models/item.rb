@@ -4,7 +4,7 @@ class Item < ApplicationRecord
 
 
   has_many :purchases
-  has_many :buyers, through: :purchases
+  has_many :users, through: :purchases
   has_many :comments
 
   def cart_action(current_user)

@@ -54,10 +54,10 @@ ActiveRecord::Schema.define(version: 20170922165848) do
 
   create_table "purchases", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "item_id"
-    t.integer "buyer_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["item_id", "buyer_id"], name: "index_purchases_on_item_id_and_buyer_id", unique: true
+    t.index ["item_id", "user_id"], name: "index_purchases_on_item_id_and_user_id", unique: true
   end
 
   create_table "slugs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

@@ -35,8 +35,11 @@
     - @comments.each do |comment|
       %div.reviews
         %strong= comment.user_email
+        says,
         %br/
+
         %p= comment.body
+
       - if current_user.email == comment.user_email
         = link_to 'Edit Comment', edit_comment_path(comment)
         |

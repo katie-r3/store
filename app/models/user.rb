@@ -3,13 +3,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :purchases, foreign_key: :buyer_id
+  has_many :purchases, foreign_key: :user_id
   has_many :items, through: :purchases
 
   validates :state, length: { maximum: 2 }
 
   before_save :uppercase_state
-  
+
+
   def uppercase_state
     state.upcase!
   end
