@@ -6,8 +6,13 @@ class User < ApplicationRecord
   has_many :purchases, foreign_key: :buyer_id
   has_many :items, through: :purchases
 
-  # before_save { |user| user.state = user.state.upcase! }
+  validates :state, length: { maximum: 2 }
 
+  before_save :uppercase_state
+  
+  def uppercase_state
+    state.upcase!
+  end
 
   def cart_count
     $redis.llen "cart#{id}"

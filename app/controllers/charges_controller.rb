@@ -5,7 +5,7 @@ class ChargesController < ApplicationController
   end
 
   def create
-    if current_user.state == 'CA'
+    if current_user.state == 'CA' 
       old_amt = current_user.add_sales_tax.to_f * 100
       @amount = old_amt.to_i
     else
