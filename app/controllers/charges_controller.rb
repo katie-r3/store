@@ -13,13 +13,17 @@ class ChargesController < ApplicationController
       @amount = old_amt.to_i
     end
 
+    # @purchase = Purchase.new(purchase_params)
+
     customer = StripeTool.create_customer(email: params[:stripeEmail], stripe_token: params[:stripeToken])
 
     charge = StripeTool.create_charge(customer_id: customer.id, amount: @amount, description: 'Rails Strip Customer')
 
     current_user.purchase_cart_items!
-    redirect_to thanks_path
 
+    UserMailer.order_email(@user).deliver_now
+
+    redirect_to thanks_path
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
@@ -29,11 +33,11 @@ class ChargesController < ApplicationController
   def thanks
   end
 
-  private
-
-  def purchase_params
-    params.require(:purchase).permit(:user_id, :item_id => [])
-  end
+  # private
+  #
+  # def purchase_params
+  #   params.require(:purchase).permit(:user_id, :item_id => [])
+  # end
 
 
 end

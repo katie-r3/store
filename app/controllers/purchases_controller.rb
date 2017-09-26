@@ -8,18 +8,6 @@ class PurchasesController < ApplicationController
   def show
   end
 
-  def new
-    @purchase = Purchase.new(purchase_params)
-  end
-
-  def create
-    purchase = current_user.purchases.build(purchase_params)
-    if purchase.save
-      render json: purchase, status: 201
-    else
-      render json: { errors: purchase.errors }, status: 422
-    end
-  end
 
   private
 

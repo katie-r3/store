@@ -1,0 +1,15 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %h1
+      Thank you for you order at thestore.com #{@user.name} !
+    %p
+      You have successfully paid for these items:
+      - @items.each do |item|
+        = item.name
+      %br/
+    %p
+      To login to the site, just follow this link: #{@url}.
+    %p Thanks again for your order and have a great day!

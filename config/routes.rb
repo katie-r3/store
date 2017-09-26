@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :purchases, only: [:index, :show]
 
   resources :comments
-  
+
   resources :items do
     resources :comments
   end
