@@ -3,7 +3,7 @@ class UserMailer < ApplicationMailer
 
   def order_email(user)
     @user = user
-    @items = @user.get_cart_items
+    @items = @user.purchases
     @url = 'http://localhost.com/login'
     mail(to: @user.email, subject: 'Thank you for your order!')
   end

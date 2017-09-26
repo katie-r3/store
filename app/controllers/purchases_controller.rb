@@ -8,6 +8,16 @@ class PurchasesController < ApplicationController
   def show
   end
 
+  def new
+    @purchase = Purchase.new
+    @purchase.items.build
+
+    respond_to do |format|
+      format.html { redirect_to @purchase }
+      format.json { render :index, status: :created }
+    end
+  end
+
 
   private
 

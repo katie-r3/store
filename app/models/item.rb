@@ -3,7 +3,7 @@ class Item < ApplicationRecord
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
 
-  has_many :purchases
+  has_and_belongs_to_many :purchases
   has_many :users, through: :purchases
   has_many :comments
 
