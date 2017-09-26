@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :is_admin?, only: [:edit, :update, :destroy]
+
 
   def is_admin?
     if current_user.nil? || current_user.admin? == false
@@ -7,6 +9,7 @@ class ItemsController < ApplicationController
       redirect_to items_path
     end
   end
+
 
   # GET /items
   # GET /items.json
@@ -22,7 +25,6 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
-    @item = Item.find(params[:id])
     @cart_action = @item.cart_action current_user.try :id
     @comments = @item.comments.all
     @comment = @item.comments.build
@@ -35,7 +37,6 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
-    @item = Item.find(params[:id])
   end
 
   # POST /items
@@ -57,7 +58,6 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1
   # PATCH/PUT /items/1.json
   def update
-    @item = Item.find(params[:id])
     respond_to do |format|
       if @item.update(item_params)
         format.html { redirect_to @item, notice: 'Item was successfully updated.' }
@@ -72,7 +72,6 @@ class ItemsController < ApplicationController
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
-    @item = Item.find(params[:id])
     @item.destroy
     respond_to do |format|
       format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
@@ -95,7 +94,9 @@ class ItemsController < ApplicationController
   private
 
     # Use callbacks to share common setup or constraints between actions.
-
+    def set_item
+      @item = Item.find(params[:id])
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
