@@ -20,3 +20,6 @@
 
 # Ignore environment variables
 .env
+
+# Ignore encrypted secrets key file.
+config/secrets.yml.key

@@ -3,6 +3,12 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   around_action :set_current_user
 
+  rescue_from ActiveRecord::RecordNotFound do |e|
+    logger.error "Record not found"
+    render :file => 'public/404.html', :status => :not_found, :layout => false
+  end
+
+
   def set_current_user
     Current.user = current_user
     yield

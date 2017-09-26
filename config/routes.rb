@@ -15,7 +15,6 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-
   resources :purchases, only: [:index, :show]
 
   resources :comments
@@ -25,7 +24,6 @@ Rails.application.routes.draw do
   end
 
   get 'thanks', to: 'charges#thanks', as: 'thanks'
-
 
 
 end

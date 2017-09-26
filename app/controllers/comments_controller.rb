@@ -2,10 +2,9 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
 
-  # GET /comments
-  # GET /comments.json
   def index
-    @comments = Comment.all
+    redirect_to items_url
+    flash[:notice] = "There was an error."
   end
 
   # GET /comments/1
