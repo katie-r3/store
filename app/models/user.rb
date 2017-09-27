@@ -36,10 +36,6 @@ class User < ApplicationRecord
     Item.find(cart_ids)
   end
 
-  def create_purchase
-    get_cart_items.each { |item| Current.user.purchases << item.id }
-  end
-
   def get_quantity(item)
     ids = $redis.lrange "cart#{id}", 0, 100 # => ["2", "1"]
     ids.each do |id|
