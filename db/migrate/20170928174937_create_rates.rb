@@ -1,4 +1,4 @@
-class CreateRates < ActiveRecord::Migration
+class CreateRates < ActiveRecord::Migration[5.1]
 
   def self.up
       create_table :rates do |t|
