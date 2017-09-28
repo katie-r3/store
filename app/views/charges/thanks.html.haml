@@ -1,5 +1,17 @@
-%h2
-  Thanks, your transaction was handled successfully!!
+.thanks-page
+  %h2
+    Thanks, your transaction was handled successfully!!
 
-%h3#thanks-back
-  = link_to "Back", :back
+    = @purchase
+
+    Your item(s) will be shipped to:
+    %br
+    %br
+    = current_user.address
+    %br
+    = current_user.city
+    ,
+    = current_user.state
+
+  %h3#thanks-back
+    = link_to "Back", :back

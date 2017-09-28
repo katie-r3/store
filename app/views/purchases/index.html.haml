@@ -1,5 +1,11 @@
 - if current_user
 
-  %h1 Your Past Orders
+  %h1.past-orders Your Past Orders
   - @purchases.each do |purchase|
-    = purchase.inspect
+
+    - purchase.items.each do |item|
+      %h3.past-orders
+      = item.name
+    %h3.past-orders
+      $
+      = sprintf "%.2f", purchase.amount

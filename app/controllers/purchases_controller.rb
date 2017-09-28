@@ -2,13 +2,14 @@ class PurchasesController < ApplicationController
   before_action :authenticate_user!
 
 
-  def index
-    @purchases = current_user.purchases
-  end
+  # def index
+  #   @purchases = current_user.purchases
+  # end
 
   def show
-    @purchase = Purchase.find(purchase_params)
+    @purchase = Purchase.find(params[:id])
   end
+
 
 
   private

@@ -31,6 +31,8 @@
 
 
   - if signed_in?
+    %h3 Rating
+    = rating_for @item
     %h3.review-header Reviews
     - @comments.each do |comment|
       %div.reviews

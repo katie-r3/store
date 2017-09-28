@@ -12,6 +12,8 @@
 //
 //= require jquery2
 //= require jquery-ui
+//= require jquery.raty
+//= require ratyrate
 //= require foundation
 //= require rails-ujs
 //= require_tree .

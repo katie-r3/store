@@ -50,6 +50,8 @@ gem 'stripe'
 gem 'dotenv-rails', :groups => [:developement, :test]
 
 gem 'aws-sdk', '~> 2'
+
+gem 'ratyrate'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

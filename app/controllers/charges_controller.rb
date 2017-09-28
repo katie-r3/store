@@ -18,13 +18,13 @@ class ChargesController < ApplicationController
 
     customer = StripeTool.create_customer(email: params[:stripeEmail], stripe_token: params[:stripeToken])
 
-    charge = StripeTool.create_charge(customer_id: customer.id, amount: @amount, description: 'Rails Strip Customer')
+    charge = StripeTool.create_charge(customer_id: customer.id, amount: @amount, description: 'Rails Stripe Customer')
 
-    purchase = Purchase.create(user_id: customer.id, amount: create_amount, item_id: 1)
-
-    redirect_to purchase_url
+    Purchase.create(user_id: customer.id, amount: create_amount, item_id: 1)
 
     current_user.purchase_cart_items!
+
+    redirect_to thanks_path
 
   rescue Stripe::CardError => e
     flash[:error] = e.message

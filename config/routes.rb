@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  post '/rate' => 'rater#create', :as => 'rate'
   resources :charges, only: [:new, :create]
 
   devise_for :admins
@@ -15,7 +16,8 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :purchases, only: [:index, :show]
+  resources :purchases, only: [:show]
+  # only: [:index, :show] - might put this back in
 
   resources :comments
 
