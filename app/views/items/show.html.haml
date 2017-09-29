@@ -14,6 +14,13 @@
   %p.image
     = image_tag @item.avatar(:medium)
 
+.item-show-links
+  = link_to 'Back', items_path
+
+  - if current_user && current_user.admin?
+    ||
+    = link_to 'Edit', edit_item_path(@item)
+
   %p Average Rating
   .average-review-rating{ 'data-score': @average_review }
   %span Based on
@@ -31,15 +38,11 @@
 
 
 
-.item-show-links
-  = link_to 'Back', items_path
 
-  - if current_user && current_user.admin?
-    ||
-    = link_to 'Edit', edit_item_path(@item)
 
   %br
   %br
+
   = render @item.reviews
   - if signed_in?
     #add-review-button
