@@ -5,6 +5,7 @@ class User < ApplicationRecord
 
   has_many :purchases, foreign_key: :user_id
   has_many :items, through: :purchases
+  has_many :reviews
 
   validates :state, length: { maximum: 2 }
 

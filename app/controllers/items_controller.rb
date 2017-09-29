@@ -26,8 +26,11 @@ class ItemsController < ApplicationController
   # GET /items/1.json
   def show
     @cart_action = @item.cart_action current_user.try :id
-    @comments = @item.comments.all
-    @comment = @item.comments.build
+    if @item.reviews.blank?
+      @average_review = 0
+    else
+      @average_review = @item.reviews.average(:rating).round(2)
+    end
   end
 
   # GET /items/new

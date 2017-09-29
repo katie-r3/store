@@ -1,0 +1,7 @@
+%h1 Edit Review
+
+= simple_form_for([@item, @review]) do |f|
+  #rating-form
+    = f.label :rating
+  = f.input :comment
+  = f.submit

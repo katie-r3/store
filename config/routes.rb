@@ -19,10 +19,9 @@ Rails.application.routes.draw do
   resources :purchases, only: [:show]
   # only: [:index, :show] - might put this back in
 
-  resources :comments
 
   resources :items do
-    resources :comments
+    resources :reviews
   end
 
   get 'thanks', to: 'charges#thanks', as: 'thanks'

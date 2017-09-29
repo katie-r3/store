@@ -14,6 +14,12 @@
   %p.image
     = image_tag @item.avatar(:medium)
 
+  %p Average Rating
+  .average-review-rating{ 'data-score': @average_review }
+  %span Based on
+  = @item.reviews.count
+  reviews
+
   #item-button
     - if signed_in?
       = link_to "", class: "button", data: {target: @cart_action, addUrl: add_to_cart_path(@item), anotherUrl: add_to_cart_path(@item)} do
@@ -28,24 +34,8 @@
     = link_to 'Edit', edit_item_path(@item)
     |
   = link_to 'Back', items_path
-
-
-  - if signed_in?
-    %h3 Rating
-    = rating_for @item
-    %h3.review-header Reviews
-    - @comments.each do |comment|
-      %div.reviews
-        %strong= comment.user_email
-        says,
-        %br/
-
-        %p= comment.body
-
-      - if current_user.email == comment.user_email
-        = link_to 'Edit Comment', edit_comment_path(comment)
-        |
-        = link_to 'Delete Comment', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?'}
-        %br
-        %br
-    = render partial: 'comments/form', locals: { comment: @comment }
+  %br
+  %br
+  = render @item.reviews
+  #add-review-button
+    = link_to "Add Review", new_item_review_path(@item)
