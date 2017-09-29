@@ -25,17 +25,22 @@
       = link_to "", class: "button", data: {target: @cart_action, addUrl: add_to_cart_path(@item), anotherUrl: add_to_cart_path(@item)} do
         %span= @cart_action
         Cart
+    - if signed_in? && current_user.get_cart_items.include?(@item)
       = link_to "" , id: "remove-button" , class: "remove", data: {targetUrl: remove_from_cart_path(@item)} do
         Remove
 
 
+
 .item-show-links
-  - if current_user && current_user.admin?
-    = link_to 'Edit', edit_item_path(@item)
-    |
   = link_to 'Back', items_path
+
+  - if current_user && current_user.admin?
+    ||
+    = link_to 'Edit', edit_item_path(@item)
+
   %br
   %br
   = render @item.reviews
-  #add-review-button
-    = link_to "Add Review", new_item_review_path(@item)
+  - if signed_in?
+    #add-review-button
+      = link_to "Add Review", new_item_review_path(@item)

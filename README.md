@@ -19,6 +19,4 @@ Some future fixes/ideas:
 
 * Styling could be better
 
-* Add sales tax, and the ability for users to enter their address. Right now they just buy items and that's the end
-
-* Possibly add the ability for users to leave ratings about the items, not just reviews
+* Have been attempting to save a user's past purchases, but so far not having much luck
