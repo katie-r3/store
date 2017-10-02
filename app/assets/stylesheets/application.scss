@@ -34,6 +34,16 @@ table {
    margin-right: auto;
 }
 
+#purchase-table {
+  border-spacing: 0.5rem;
+  padding: 3px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #f79646 #ccc;
+  background-color: #fde9d9;
+  border-collapse: collapse;
+}
+
 h1.items_header {
    text-align: center;
 }
@@ -261,6 +271,12 @@ body, h1, h2, h3, .button {
 
 #thanks-back, .past-orders, .thanks-page {
   margin-left: 20px;
+}
+
+#actual-orders {
+  border: solid black 2px;
+  margin-right: 400px;
+  text-align: center;
 }
 
 .cart-total {

@@ -9,8 +9,6 @@ class User < ApplicationRecord
 
   validates :state, length: { maximum: 2 }
 
-  ratyrate_rater
-
   before_save :uppercase_state
 
 

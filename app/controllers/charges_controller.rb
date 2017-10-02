@@ -14,13 +14,13 @@ class ChargesController < ApplicationController
       @amount = old_amt.to_i
     end
 
-    create_amount = current_user.cart_total_price.to_f
+    create_amount = @amount.to_f / 100
 
     customer = StripeTool.create_customer(email: params[:stripeEmail], stripe_token: params[:stripeToken])
 
     charge = StripeTool.create_charge(customer_id: customer.id, amount: @amount, description: 'Rails Stripe Customer')
 
-    @purchase = Purchase.create(user_id: current_user.id, amount: create_amount, item_id: 1)
+    @purchase = Purchase.create(user_id: current_user.id, amount: create_amount, items: current_user.get_cart_items)
 
     current_user.purchase_cart_items!
 

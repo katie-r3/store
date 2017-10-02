@@ -1,6 +1,17 @@
-%p
-  This is your purchase
+%h2
+  Purchase made on
+  = @purchase.created_at.strftime("%m/%d/%Y")
+  %br
 
-%p
-  Your purchase is:
-  = @purchase
+- @purchase.items.each do |item|
+  %p
+    = item.name
+    %br
+    $
+    = item.price
+    %br
+    = image_tag item.avatar(:medium)
+
+%p Total:
+$
+= @purchase.amount
