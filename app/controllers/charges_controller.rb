@@ -20,7 +20,7 @@ class ChargesController < ApplicationController
 
     charge = StripeTool.create_charge(customer_id: customer.id, amount: @amount, description: 'Rails Stripe Customer')
 
-    Purchase.create(user_id: customer.id, amount: create_amount, item_id: 1)
+    @purchase = Purchase.create(user_id: current_user.id, amount: create_amount, item_id: 1)
 
     current_user.purchase_cart_items!
 

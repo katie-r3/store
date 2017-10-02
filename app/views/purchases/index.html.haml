@@ -3,9 +3,8 @@
   %h1.past-orders Your Past Orders
   - @purchases.each do |purchase|
 
-    - purchase.items.each do |item|
-      %h3.past-orders
-      = item.name
-    %h3.past-orders
-      $
-      = sprintf "%.2f", purchase.amount
+    %h2
+    - purchase.items
+    %h2
+    $
+    = sprintf "%.2f", purchase.amount
