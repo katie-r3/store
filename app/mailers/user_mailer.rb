@@ -3,8 +3,7 @@ class UserMailer < ApplicationMailer
 
   def order_email(user)
     @user = user
-    @items = @user.purchases
-    @url = 'http://localhost.com/login'
+    @url = 'http://intense-spire-74031.herokuapp.com/'
     mail(to: @user.email, subject: 'Thank you for your order!')
   end
 

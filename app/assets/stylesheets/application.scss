@@ -29,19 +29,9 @@ body {
   background-color: white;
 }
 
-table {
-   margin-left: auto;
-   margin-right: auto;
-}
-
-#items-table {
-  border: 3px solid #9370DB;
-  width: 50%;
-  background-color: #E6E6FA;
-  letter-spacing: 1px;
-}
-
 #purchase-table {
+  margin-left: auto;
+  margin-right: auto;
   border-spacing: 0.5rem;
   padding: 3px;
   border-width: 1px;
@@ -102,17 +92,12 @@ h1.items_header {
   margin: 10px;
 }
 
-
 #add-button {
   padding: 5%;
   border: solid blue 2px;
   background-color: #0000FF;
   color: white !important;
   margin: 10px;
-}
-
-body {
-  text-decoration: none;
 }
 
 .search-empty {

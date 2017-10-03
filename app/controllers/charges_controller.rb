@@ -22,9 +22,12 @@ class ChargesController < ApplicationController
 
     @purchase = Purchase.create(user_id: current_user.id, amount: create_amount, items: current_user.get_cart_items)
 
+    UserMailer.order_email(current_user).deliver_now
+
     current_user.purchase_cart_items!
 
     redirect_to thanks_path
+
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
