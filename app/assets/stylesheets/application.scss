@@ -34,6 +34,13 @@ table {
    margin-right: auto;
 }
 
+#items-table {
+  border: 3px solid #9370DB;
+  width: 50%;
+  background-color: #E6E6FA;
+  letter-spacing: 1px;
+}
+
 #purchase-table {
   border-spacing: 0.5rem;
   padding: 3px;
@@ -42,10 +49,19 @@ table {
   border-color: #f79646 #ccc;
   background-color: #fde9d9;
   border-collapse: collapse;
+  width: 30%;
+  letter-spacing: 1px;
 }
 
 h1.items_header {
    text-align: center;
+}
+
+.items-index {
+  text-align: center;
+  border-bottom: solid 2px black;
+  font-size: 20px;
+  margin: 20px;
 }
 
  .item-show-links {
@@ -269,7 +285,7 @@ body, h1, h2, h3, .button {
   font-family: 'Asap Condensed', sans-serif;
 }
 
-#thanks-back, .past-orders, .thanks-page {
+#thanks-back, .past-orders, .thanks-page, .user-past-purchase-show {
   margin-left: 20px;
 }
 

@@ -10,25 +10,22 @@
 - if current_user && current_user.admin?
   = link_to 'Add New Item', new_item_path, class: "button success"
 
-%table
-  %thead
-    %tr
-      %th
-      %th
-      %th Description
-      %th Price $
-      %th{:colspan => "3"}
-
-  %tbody
-    - @items.each do |item|
-      %tr
-        %td
-        %td= image_tag item.avatar(:thumb)
-        %td= link_to item.description, item
-        %td= sprintf "%.2f", item.price
 
 
-        - if current_user && current_user.admin?
-          %td= link_to 'Edit', edit_item_path(item)
-          %td= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' }
+
+- @items.each do |item|
+  %p.items-index
+    = image_tag item.avatar(:thumb)
+    %br
+    = link_to item.description, item
+    %br
+    $
+    = sprintf "%.2f", item.price
+    %br
+
+
+    - if current_user && current_user.admin?
+      = link_to 'Edit', edit_item_path(item)
+      ||
+      = link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' }
 %br/

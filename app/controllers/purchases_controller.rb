@@ -4,7 +4,7 @@ class PurchasesController < ApplicationController
 
 
   def index
-    @purchases = current_user.purchases
+    @purchases = current_user.purchases.all.order("created_at DESC")
   end
 
   def show

@@ -7,7 +7,9 @@ class User < ApplicationRecord
   has_many :items, through: :purchases
   has_many :reviews
 
-  validates :state, length: { maximum: 2 }
+  validates :state, length: { maximum: 2 }, presence: true
+  validates :address, :city, length: { minimum: 2 }, presence: true
+
 
   before_save :uppercase_state
 
