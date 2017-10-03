@@ -6,7 +6,7 @@
 
 %p#notice= notice
 
-%h1.items_header Items
+
 - if current_user && current_user.admin?
   = link_to 'Add New Item', new_item_path, class: "button success"
 

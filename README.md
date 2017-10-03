@@ -18,5 +18,3 @@ Created using:
 Some future fixes/ideas:
 
 * Styling could be better
-
-* Have been attempting to save a user's past purchases, but so far not having much luck
