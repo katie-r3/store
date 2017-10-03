@@ -1,15 +1,17 @@
 - if current_user
-  %h2 Your Recent Purchases:
+  %h3 Your Recent Purchases:
   %table#purchase-table
     %thead
       %tr
         %th Date of Purchase
         %th Total Amount
+        %th 
 
 
 
     %tbody
       - @purchases.each do |purchase|
         %tr
-          %td= link_to purchase.created_at.strftime("%m/%d/%Y"), user_purchase_path(purchase)
+          %td= purchase.created_at.strftime("%m/%d/%Y")
           %td= sprintf "%.2f", purchase.amount
+          %td= link_to "See Details", user_purchase_path(purchase)

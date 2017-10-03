@@ -54,6 +54,7 @@ gem 'aws-sdk', '~> 2'
 gem 'ratyrate'
 
 gem 'simple_form'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

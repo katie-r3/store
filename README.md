@@ -17,4 +17,6 @@ Created using:
 
 Some future fixes/ideas:
 
-* Styling could be better
+* Styling needs some work
+
+* Mailer sends email when purchase is complete, but the email doesn't show what the user bought or how much was spent

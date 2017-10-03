@@ -1,9 +1,13 @@
 .user-past-purchase-show
-  %h2
+  %h3
     Purchase made on
     = @purchase.created_at.strftime("%m/%d/%Y")
     %br
-
+    Total:
+    $
+    = @purchase.amount
+    %br
+    %br
   - @purchase.items.each do |item|
     %p
       = link_to item.name, item_path(item)
@@ -14,7 +18,3 @@
       = item.description
       %br
       = image_tag item.avatar(:medium)
-
-  %h4 Total:
-  $
-  = @purchase.amount
