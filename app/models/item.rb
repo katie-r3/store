@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   has_many :users, through: :purchases
   has_many :reviews
 
+
   def cart_action(current_user)
     if current_user
       "Add to"

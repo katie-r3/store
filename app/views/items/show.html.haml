@@ -26,9 +26,11 @@
       = link_to "", class: "button", data: {target: @cart_action, addUrl: add_to_cart_path(@item), anotherUrl: add_to_cart_path(@item)} do
         %span= @cart_action
         Cart
+
     - if signed_in? && current_user.get_cart_items.include?(@item)
       = link_to "" , id: "remove-button" , class: "remove", data: {targetUrl: remove_from_cart_path(@item)} do
         Remove
+
 
   %p Average Rating
   .average-review-rating{ 'data-score': @average_review }

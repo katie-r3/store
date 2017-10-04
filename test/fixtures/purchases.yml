@@ -2,8 +2,8 @@
 
 one:
   item_id: 1
-  buyer_id: 1
+  user_id: 1
 
 two:
   item_id: 1
-  buyer_id: 1
+  user_id: 1

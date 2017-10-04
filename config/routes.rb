@@ -11,8 +11,9 @@ Rails.application.routes.draw do
     put 'remove/:item_id', to: 'carts#remove', as: :remove_from
   end
 
+
   devise_for :admins
-  
+
   devise_for :users
 
   resource :user do

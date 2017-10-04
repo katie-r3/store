@@ -7,16 +7,15 @@
     $this = $(this)
     if $this.data('target') == 'Add to'
       url = $this.data('addurl')
-      new_target = "Add another to"
+      new_target = "Add to"
     else
       url = $this.data('addurl')
-      new_target = "Add to another to"
+      new_target = "Add to"
     $.ajax url: url, type: 'put', success: (data) ->
       $('.cart-count').html(data)
       $this.find('span').html(new_target)
       $this.data('target', new_target)
       location.reload()
-
 
 
   $('#mycart .remove').click (e) ->
@@ -29,8 +28,8 @@
       location.reload()
 
 
-# buttons within the cart itself
-  $('#remove-button').click (e) ->
+  # buttons within the cart itself
+  $('#remove-button .remove').click (e) ->
     e.preventDefault()
     $this = $(this).closest('a')
     url = $this.data('targeturl')
