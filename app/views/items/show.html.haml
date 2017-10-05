@@ -14,6 +14,10 @@
   %p.image
     = image_tag @item.avatar(:medium)
 
+  %p
+    %strong Left in Stock:
+    = @item.quantity
+
 .item-show-links
   = link_to 'Back', items_path
 
@@ -22,7 +26,7 @@
     = link_to 'Edit', edit_item_path(@item)
 
   #item-button
-    - if signed_in?
+    - if signed_in? && @item.quantity > 0
       = link_to "", class: "button", data: {target: @cart_action, addUrl: add_to_cart_path(@item), anotherUrl: add_to_cart_path(@item)} do
         %span= @cart_action
         Cart

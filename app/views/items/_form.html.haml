@@ -19,5 +19,8 @@
   .field
     = form.label :avatar
     = form.file_field :avatar, as: :file
+  .field
+    = form.label :quantity
+    = form.text_field :quantity, id: :item_quantity
   .actions
     = form.submit

@@ -48,17 +48,13 @@ class User < ApplicationRecord
     end
   end
 
-  def get_wish_list_quantity(item)
-    ids = $redis.lrange "wish_list#{id}", 0, 100 # => ["2", "1"]
-    ids.each do |id|
-      if id.to_i == item
-        return ids.count(id)
-      end
-    end
-  end
-
   def purchase_cart_items!
-    get_cart_items.each { |item| purchase?(item) }
+    get_cart_items.each do |item|
+      purchase?(item)
+      cart_quantity = get_quantity(item.id)
+      item.quantity -= cart_quantity
+      item.save!
+    end
     $redis.del "cart#{id}"
   end
 
