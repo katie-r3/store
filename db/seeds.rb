@@ -20,6 +20,6 @@ item_list = [
   ["kombucha", 12.99, "variety pack of synergy kombucha", 0]
 ]
 
-item_list.each do |name, price, description|
+item_list.each do |name, price, description, quantity|
   Item.create(name: name, price: price, description: description, quantity: quantity)
 end

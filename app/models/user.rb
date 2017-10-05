@@ -58,6 +58,12 @@ class User < ApplicationRecord
     $redis.del "cart#{id}"
   end
 
+  def no_more?
+    get_cart_items.each do |item|
+      return false if get_quantity(item.id) == item.quantity
+    end
+  end
+
   def purchase(item)
     items << item unless purchase?(item)
   end

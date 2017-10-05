@@ -18,18 +18,7 @@
       location.reload()
 
 
-  $('#mycart .remove').click (e) ->
-    e.preventDefault()
-    $this = $(this).closest('a')
-    url = $this.data('targeturl')
-    $.ajax url: url, type: 'put', success: (data) ->
-      $('.cart-count').html(data)
-      $this.closest('.cart-item').slideUp()
-      location.reload()
-
-
-  # buttons within the cart itself
-  $('#remove-button .remove').click (e) ->
+  $('#item-button .remove').click (e) ->
     e.preventDefault()
     $this = $(this).closest('a')
     url = $this.data('targeturl')
@@ -44,4 +33,14 @@
     url = $this.data('targeturl')
     $.ajax url: url, type: 'put', success: (data) ->
       $('.cart-count').html(data)
+      location.reload()
+
+
+  $('#mycart .remove').click (e) ->
+    e.preventDefault()
+    $this = $(this).closest('a')
+    url = $this.data('targeturl')
+    $.ajax url: url, type: 'put', success: (data) ->
+      $('.cart-count').html(data)
+      $this.closest('.cart-item').slideUp()
       location.reload()
