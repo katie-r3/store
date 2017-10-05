@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default from: 'mystorenotifications@gmail.com'
+  default from: 'thestore909090@gmail.com'
 
   def order_email(user)
     @user = user

@@ -9,15 +9,15 @@
 Item.delete_all
 
 item_list = [
-  ["phonecase", 12.99, "galaxy s8 phone case", 0],
-  ["phone charger", 12.99, "charger for iphone 7", 0],
-  ["water bottle", 12.99, "steel water bottle", 0],
-  ["mouse", 12.99, "mouse for mac", 0],
-  ["backpack", 12.99, "backpack with room for laptop", 0],
-  ["galaxy s4", 399.99, "s4 galaxy phone", 0],
-  ["iphone 7", 359.99, "iphone 7", 0],
-  ["mousepad", 12.99, "silly kitty mousepad", 0],
-  ["kombucha", 12.99, "variety pack of synergy kombucha", 0]
+  ["phonecase", 12.99, "galaxy s8 phone case", 10],
+  ["phone charger", 12.99, "charger for iphone 7", 10],
+  ["water bottle", 12.99, "steel water bottle", 10],
+  ["mouse", 12.99, "mouse for mac", 10],
+  ["backpack", 12.99, "backpack with room for laptop", 10],
+  ["galaxy s4", 399.99, "s4 galaxy phone", 10],
+  ["iphone 7", 359.99, "iphone 7", 10],
+  ["mousepad", 12.99, "silly kitty mousepad", 10],
+  ["kombucha", 12.99, "variety pack of synergy kombucha", 10]
 ]
 
 item_list.each do |name, price, description, quantity|

@@ -7,12 +7,6 @@
 %p#notice= notice
 
 
-- if current_user && current_user.admin?
-  = link_to 'Add New Item', new_item_path, class: "button success"
-
-
-
-
 - @items.each do |item|
   %p.items-index
     = image_tag item.avatar(:thumb)
@@ -23,9 +17,4 @@
     = sprintf "%.2f", item.price
     %br
 
-
-    - if current_user && current_user.admin?
-      = link_to 'Edit', edit_item_path(item)
-      ||
-      = link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' }
 %br/

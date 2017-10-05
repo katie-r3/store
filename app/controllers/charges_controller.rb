@@ -23,6 +23,10 @@ class ChargesController < ApplicationController
     @purchase = Purchase.create(user_id: current_user.id, amount: create_amount, items: current_user.get_cart_items)
 
     UserMailer.order_email(current_user).deliver_now
+    
+    if !current_user.no_more?
+      InventoryMailer.inventory_email(@item).deliver_now
+    end
 
     current_user.purchase_cart_items!
 

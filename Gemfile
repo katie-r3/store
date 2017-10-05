@@ -55,6 +55,8 @@ gem 'ratyrate'
 
 gem 'simple_form'
 
+gem 'rails_admin'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

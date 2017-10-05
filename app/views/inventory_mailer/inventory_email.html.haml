@@ -1,0 +1,13 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %h1
+      You are out of stock on an item!
+      = @item
+
+    %p
+      Please order more soon!
+    %p
+      To login to the site and check your current inventory, just follow this link: #{@url}.
