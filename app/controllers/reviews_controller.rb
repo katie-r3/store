@@ -1,17 +1,16 @@
 class ReviewsController < ApplicationController
   before_action :find_item
   before_action :find_review, only: [:edit, :update, :destroy]
-  before_action :signed_in?, only: [:edit, :update, :destroy]
+  before_action :signed_in?
 
   def signed_in?
     if current_user.nil?
-      flash[:notice] = "Access denied! You aren't allowed to do that!"
+      flash[:notice] = "Access denied! You must be signed in!"
       redirect_to items_path
     end
   end
 
   def index
-    @reviews = @item.reviews.all
   end
 
   def new
