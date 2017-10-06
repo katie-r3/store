@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/cms', as: 'rails_admin'
+  
   root 'items#index'
 
   resources :charges, only: [:new, :create]

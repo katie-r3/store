@@ -36,16 +36,15 @@
         Remove
 
 
-  %p Average Rating
+  %h4 Average Rating
   .average-review-rating{ 'data-score': @average_review }
   %span Based on
-  = @item.reviews.count
+  = link_to @item.reviews.count, item_reviews_path(@item)
   reviews
 
   %br
   %br
 
-  = render @item.reviews
   - if signed_in?
     #add-review-button
       = link_to "Add Review", new_item_review_path(@item)

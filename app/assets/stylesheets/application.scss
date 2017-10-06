@@ -52,6 +52,7 @@ h1.items_header {
   border-bottom: solid 2px black;
   font-size: 20px;
   margin: 20px;
+  float:left;
 }
 
  .item-show-links {
@@ -285,7 +286,7 @@ body, h1, h2, h3, .button {
 
 .all-ratings {
   border: solid grey 1px;
-  margin: 15px;
+  margin: 100px;
   text-align: center;
   background-color: #FFE9C1;
 }
@@ -327,4 +328,8 @@ body, h1, h2, h3, .button {
 
 #item-button {
   margin: 20px;
+}
+
+#review-header {
+  text-align: center;
 }
