@@ -29,16 +29,6 @@ body {
   background-color: white;
 }
 
-.image-index {
-  position: relative;
-  float: left;
-  width: 100px;
-  height: 100px;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 #purchase-table {
   margin-left: auto;
   margin-right: auto;
@@ -345,4 +335,8 @@ body, h1, h2, h3, .button {
 
 #review-header {
   text-align: center;
+}
+
+#back-item-link {
+  margin-left: 20px;
 }

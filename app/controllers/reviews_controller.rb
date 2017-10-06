@@ -22,7 +22,7 @@ class ReviewsController < ApplicationController
     @review.item_id = @item.id
     @review.user_id = current_user.id
     if @review.save
-      redirect_to item_path(@item)
+      redirect_to item_reviews_path(@item)
     else
       render 'new'
     end

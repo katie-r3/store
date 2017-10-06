@@ -1,2 +1,7 @@
-%h2#review-header Reviews
-= render @item.reviews
+%p#back-item-link
+  = link_to "Back to item", item_path(@item)
+- if @item.reviews.empty?
+  %h2 There are no reviews for this item yet.
+- else
+  %h2#review-header Reviews
+  = render @item.reviews

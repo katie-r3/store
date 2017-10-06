@@ -32,7 +32,7 @@
               %span Menu
         %section.top-bar-section
           %ul.right
-            -if signed_in?
+            - if signed_in?
               %li
                 = link_to cart_path do
 
@@ -43,9 +43,9 @@
 
               %li= link_to "Past Purchases", user_purchases_path
               %li= link_to current_user.email, edit_user_registration_path
-
               %li= link_to "Logout", destroy_user_session_path, method: :delete
-            -else
+
+            - elsif current_user.nil?
               %li= link_to "Register", new_user_registration_path
               %li= link_to "Login", new_user_session_path
               %li= link_to "Admin Dashboard", "/cms"
@@ -53,5 +53,7 @@
     -render 'layouts/alerts'
 
     .content
+
       = yield
+
     = javascript_include_tag "application"

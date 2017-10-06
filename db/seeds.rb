@@ -14,10 +14,13 @@ item_list = [
   ["water bottle", 12.99, "steel water bottle", 10],
   ["mouse", 12.99, "mouse for mac", 10],
   ["backpack", 12.99, "backpack with room for laptop", 10],
-  ["galaxy s4", 399.99, "s4 galaxy phone", 10],
+  ["galaxy s8", 399.99, "s8 galaxy phone", 10],
   ["iphone 7", 359.99, "iphone 7", 10],
   ["mousepad", 12.99, "silly kitty mousepad", 10],
-  ["kombucha", 12.99, "variety pack of synergy kombucha", 10]
+  ["kombucha", 12.99, "variety pack of synergy kombucha", 10],
+  ["mouse", 9.99, "cheap mouse", 10],
+  ["stuff", 4.49, "lots of stuff", 10],
+  ["snacks", 9.99, "variety of snacks", 10]
 ]
 
 item_list.each do |name, price, description, quantity|
