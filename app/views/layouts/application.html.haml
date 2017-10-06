@@ -21,11 +21,7 @@
               %a{:href => "/"}
                 %i.fi-play-video
                 Store
-          %li.name
-            %h1
-              %a{:href => new_admin_session_path}
-                %i.fi-play-video
-                Admin Login
+
           %li.search-bar
             %i.fi-play-video
               = form_tag(items_path, :method => "get", id: "search-form") do
@@ -52,6 +48,7 @@
             -else
               %li= link_to "Register", new_user_registration_path
               %li= link_to "Login", new_user_session_path
+              %li= link_to "Admin Dashboard", "/cms"
 
     -render 'layouts/alerts'
 

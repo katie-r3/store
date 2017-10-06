@@ -3,7 +3,7 @@ class InventoryMailer < ApplicationMailer
 
   def inventory_email(item)
     @item = item
-    @url = 'http://intense-spire-74031.herokuapp.com/'
+    @url = 'http://intense-spire-74031.herokuapp.com/cms'
     mail(to: 'thestore909090@gmail.com', subject: 'OUT OF STOCK - ORDER SOON')
   end
 end
