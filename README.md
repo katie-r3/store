@@ -20,3 +20,7 @@ Some future fixes/ideas:
 * Styling needs some work
 
 * Mailer sends email when purchase is complete, but the email doesn't show what the user bought or how much was spent
+
+* Mailer also emails when inventory is at 0.
+
+* Users are prevented from adding more than the current quantity of an item

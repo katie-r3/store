@@ -6,9 +6,10 @@ class Item < ApplicationRecord
   has_many :users, through: :purchases
   has_many :reviews
 
-  extend FriendlyId
-  friendly_id :name, use: :slugged
 
+  def to_param
+    "#{id} #{name}".parameterize
+  end
 
   def cart_action(current_user)
     if current_user
