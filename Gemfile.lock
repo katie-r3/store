@@ -97,6 +97,8 @@ GEM
     foundation-rails (5.4.5.0)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
+    friendly_id (5.2.3)
+      activerecord (>= 4.0.0)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     haml (4.0.7)
@@ -300,6 +302,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   foundation-rails
+  friendly_id
   haml
   haml-rails (~> 1.0)
   hiredis

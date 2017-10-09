@@ -3,5 +3,9 @@
 - if @item.reviews.empty?
   %h2 There are no reviews for this item yet.
 - else
-  %h2#review-header Reviews
+  %h2#review-header Reviews for:
+  %h3#review-item-name
+    = @item.name
+  %p#review-item-image
+    = image_tag @item.avatar(:thumb)
   = render @item.reviews

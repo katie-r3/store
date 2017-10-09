@@ -57,6 +57,8 @@ gem 'simple_form'
 
 gem 'rails_admin'
 
+gem 'friendly_id'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

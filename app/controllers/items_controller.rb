@@ -82,23 +82,13 @@ class ItemsController < ApplicationController
     end
   end
 
-  protected
 
-    def find_item
-      if id = Slug[params[:id]]
-        @item = Item.find(id)
-      else
-        @item = Item.find(params[:id])
-      end
-    rescue ActiveRecord::RecordNotFound
-      redirect_to root_path
-    end
 
   private
 
     # Use callbacks to share common setup or constraints between actions.
     def set_item
-      @item = Item.find(params[:id])
+      @item = Item.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
