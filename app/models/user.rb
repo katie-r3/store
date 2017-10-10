@@ -8,14 +8,30 @@ class User < ApplicationRecord
   has_many :reviews
 
   validates :state, length: { maximum: 2 }, presence: true
-  validates :address, :city, length: { minimum: 2 }, presence: true
-
+  validates :first_name, :last_name, :address, :city, length: { minimum: 2 }, presence: true
+  validates_length_of :zipcode, :is => 5
+  validates :zipcode, presence: true
 
   before_save :uppercase_state
+  before_save :uppercase_name
+  geocoded_by :full_address
 
 
   def uppercase_state
     state.upcase!
+  end
+
+  def uppercase_name
+    first_name.capitalize!
+    last_name.capitalize!
+  end
+
+  def full_name
+    [first_name, last_name].compact.join(' ')
+  end
+
+  def full_address
+    [address, city, state, zipcode].compact.join(', ')
   end
 
   def cart_count

@@ -11,6 +11,14 @@
       %div
         Currently waiting confirmation for: #{resource.unconfirmed_email}
     .field
+      = f.label :first_name
+      %br
+      = f.text_field :first_name
+    .field
+      = f.label :last_name
+      %br
+      = f.text_field :last_name
+    .field
       = f.label :address
       %i (your street address)
       %br
@@ -24,6 +32,10 @@
       %i (use your state's abbreviation)
       %br
       = f.text_field :state
+    .field
+      = f.label :zipcode
+      %br
+      = f.text_field :zipcode
     .field
       = f.label :password
       %i (leave blank if you don't want to change it)

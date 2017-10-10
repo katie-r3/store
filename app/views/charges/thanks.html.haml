@@ -7,11 +7,9 @@
     Your item(s) will be shipped to:
     %br
     %br
-    = current_user.address
+    = current_user.full_name
     %br
-    = current_user.city
-    ,
-    = current_user.state
+    = current_user.full_address
 
   %h3#thanks-back
     = link_to "Back", :back

@@ -57,7 +57,7 @@ gem 'simple_form'
 
 gem 'rails_admin'
 
-gem 'friendly_id'
+gem 'geocoder'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

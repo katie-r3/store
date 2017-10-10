@@ -18,3 +18,8 @@
       = item.description
       %br
       = image_tag item.avatar(:medium)
+
+    %p
+      Want to leave a
+      = link_to "review", new_item_review_path(item)
+      ?
