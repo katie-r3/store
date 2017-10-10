@@ -9,7 +9,7 @@
 
 - @items.each do |item|
   %p.items-index
-    = image_tag item.avatar(:thumb)
+    = image_tag item.avatar(:medium)
     %br
     = link_to item.description, item
     %br
