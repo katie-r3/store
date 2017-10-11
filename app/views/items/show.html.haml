@@ -28,7 +28,7 @@
 
   #item-button
     - if signed_in? && @item.quantity > 0 && current_user.no_more?
-      = link_to "", class: "button", data: {target: @cart_action, addUrl: add_to_cart_path(@item), anotherUrl: add_to_cart_path(@item)} do
+      = link_to "", id: "add-button" , class: "button", data: {target: @cart_action, addUrl: add_to_cart_path(@item), anotherUrl: add_to_cart_path(@item)} do
         %span= @cart_action
         Cart
 
