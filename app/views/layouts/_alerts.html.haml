@@ -1,6 +1,6 @@
-- if notice.present? || alert.present?
-  .row
-    - is_alert = alert.present? ? "alert" : ""
-    %div{:class => "alert-box #{is_alert}", "data-alert" => ""}
-      = notice || alert
-      %a.close{:href => "#"} ×
+
+%div
+  - flash.each do |key, value|
+    %div{:class => "alert #{flash_class(key).to_s}"}
+      %a.close{:href=> "#"} x
+      = value
