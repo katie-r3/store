@@ -3,8 +3,8 @@
     %h4 There are no items that match
     = params[:search]
 
-
-.alert-box= notice
+- if flash[:notice]
+  .alert-box= notice  
 
 
 - @items.each do |item|

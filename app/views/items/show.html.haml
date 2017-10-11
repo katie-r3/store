@@ -1,5 +1,6 @@
 .item-show-info
-  .alert-box= notice
+  - if flash[:notice]
+    .alert-box= notice
   %p
     %strong Item:
     = @item.name
