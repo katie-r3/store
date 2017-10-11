@@ -9,8 +9,8 @@
     %br
     %br
   - @purchase.items.each do |item|
-    %p
-      = link_to item.name, item_path(item)
+    %h5
+      = link_to "View", item_path(item)
       %br
       $
       = item.price
@@ -19,7 +19,7 @@
       %br
       = image_tag item.avatar(:medium)
 
-    %p
+    %h5
       Want to leave a
       = link_to "review", new_item_review_path(item)
       ?
