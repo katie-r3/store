@@ -24,3 +24,5 @@ Some future fixes/ideas:
 * Mailer also emails when inventory is at 0.
 
 * Users are prevented from adding more than the current quantity of an item
+
+* Users can only leave one review per item

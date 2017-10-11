@@ -1,4 +1,6 @@
-%h1 Edit Review
+%h1
+  Edit review for:
+  = @item.name.capitalize
 
 = simple_form_for([@item, @review]) do |f|
   #rating-form

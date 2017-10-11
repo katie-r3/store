@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
 
   def is_admin?
     if current_user.nil? || current_user.admin? == false
-      flash[:notice] = "Access denied! You aren't allowed to do that!"
+      flash[:error] = "Access denied! You aren't allowed to do that!"
       redirect_to items_path
     end
   end
