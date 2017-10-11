@@ -1,4 +1,5 @@
-.alert-box= notice
+-if flash[:notice]
+  .alert-box= notice
 
 %p#back-item-link
   = link_to "Back to item", item_path(@item)
