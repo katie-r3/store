@@ -14,13 +14,15 @@
           = image_tag item.avatar(:medium)
           - 2.times do
             %br
+            
+        %br
+        = link_to "" , id: "add-button" , class: "add-to-cart", data: {targetUrl: add_to_cart_path(item)} do
+          Add More
         %br
         = link_to "" , id: "remove-button" , class: "remove", data: {targetUrl: remove_from_cart_path(item)} do
           Remove
         %br
-        %br
-        = link_to "" , id: "add-button" , class: "add-to-cart", data: {targetUrl: add_to_cart_path(item)} do
-          Add More
+
       .column.small-3.primary-bg.text-center.radius-r1{"data-equalizer-watch" => ""}
         %h5.scale Price per unit
         %h5.scale
