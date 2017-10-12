@@ -32,7 +32,7 @@ class User < ApplicationRecord
   end
 
   def full_address
-    [address_line1, address_line2, city, state, zipcode].compact.join(', ')
+    [city, state, zipcode].compact.join(', ')
   end
 
   def cart_count

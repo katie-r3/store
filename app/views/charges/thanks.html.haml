@@ -9,7 +9,18 @@
     %br
     = current_user.full_name
     %br
+    = current_user.address_line1
+    %br
+    - if !current_user.address_line2.empty?
+      = current_user.address_line2
+      %br
     = current_user.full_address
+    %br
 
-  %h3#thanks-back
+
+  %h5#view-purchases
+    To view your purchases, click
+    = link_to "here", user_purchases_path(@user)
+
+  %h5#thanks-back
     = link_to "Back", :back
