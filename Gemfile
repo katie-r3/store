@@ -57,7 +57,9 @@ gem 'simple_form'
 
 gem 'rails_admin'
 
-gem 'geocoder'
+gem 'lob'
+
+gem 'figaro'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

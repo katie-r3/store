@@ -8,13 +8,14 @@ class User < ApplicationRecord
   has_many :reviews
 
   validates :state, length: { maximum: 2 }, presence: true
-  validates :first_name, :last_name, :address, :city, length: { minimum: 2 }, presence: true
+  validates :first_name, :last_name, :address_line1, :city, length: { minimum: 2 }, presence: true
   validates_length_of :zipcode, :is => 5
   validates :zipcode, presence: true
 
+  validate :address_verification
+
   before_save :uppercase_state
   before_save :uppercase_name
-  geocoded_by :full_address
 
 
   def uppercase_state
@@ -31,7 +32,7 @@ class User < ApplicationRecord
   end
 
   def full_address
-    [address, city, state, zipcode].compact.join(', ')
+    [address_line1, address_line2, city, state, zipcode].compact.join(', ')
   end
 
   def cart_count
@@ -91,6 +92,25 @@ class User < ApplicationRecord
   def wish_list_count
     $redis.llen "wish_list#{id}"
   end
+
+  private
+
+  def address_verification
+  lob = Lob::Client.new(api_key: "test_8bf028b29ac1c2c97ce7e85d57d96d51feb")
+
+  address = lob.us_verifications.verify(
+    primary_line: self.address_line1,
+    secondary_line: self.address_line2,
+    city: self.city,
+    state: self.state,
+    zip_code: self.zipcode,
+  )
+
+  if address["deliverability"] != "deliverable"
+    errors.add("This address is not deliverable: ", address["deliverability"])
+  end
+
+end
 
 
 end
