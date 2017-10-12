@@ -15,6 +15,8 @@ Created using:
 
 * Stripe (for receiving payments) - to run a mock payment, enter '4242 4242 4242 4242' and any future expiration date and 3 digit security code you like.
 
+* Lob (for verifying user's address upon sign up) - for it to work properly a live api key is required, which is not free. So this feature doesn't currently work
+
 Some future fixes/ideas:
 
 * Styling needs some work
