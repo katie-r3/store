@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171010183610) do
+ActiveRecord::Schema.define(version: 20171012213957) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
@@ -32,6 +32,12 @@ ActiveRecord::Schema.define(version: 20171010183610) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.float "price", limit: 24
@@ -45,6 +51,7 @@ ActiveRecord::Schema.define(version: 20171010183610) do
     t.integer "purchase_id"
     t.integer "quantity"
     t.string "slug"
+    t.integer "category_id"
   end
 
   create_table "items_purchases", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

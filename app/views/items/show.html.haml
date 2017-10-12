@@ -18,6 +18,8 @@
   %p
     %strong Left in Stock:
     = @item.quantity
+  %p
+    = @item.category.name
 
 .item-show-links
   = link_to 'Back', items_path

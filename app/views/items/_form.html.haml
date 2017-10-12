@@ -7,6 +7,7 @@
       %ul
         - item.errors.full_messages.each do |message|
           %li= message
+  = select_tag(:category_id, options_for_select(@categories), :prompt => "Select a category")
   .field
     = form.label :name
     = form.text_field :name, id: :item_name

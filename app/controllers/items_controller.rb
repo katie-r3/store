@@ -14,11 +14,16 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
-    if params[:search]
-      @items = Item.search(params[:search]).order("created_at DESC")
+    if params[:category].blank?
+      @items = Item.all
+      if params[:search]
+        @items = Item.search(params[:search]).order("created_at DESC")
+      else
+        @items = Item.all.order("created_at DESC")
+      end
     else
-      @items = Item.all.order("created_at DESC")
+      @category_id = Category.find_by(name: params[:category]).id
+      @items = Item.where(:category_id => @category_id).order("created_at DESC")
     end
   end
 
@@ -36,16 +41,19 @@ class ItemsController < ApplicationController
   # GET /items/new
   def new
     @item = Item.new
+    @categories = Category.all.map{ |c| [c.name, c.id] }
   end
 
   # GET /items/1/edit
   def edit
+    @categories = Category.all.map{ |c| [c.name, c.id] }
   end
 
   # POST /items
   # POST /items.json
   def create
     @item = Item.new(item_params)
+    @item.category_id = params[:category_id]
 
     respond_to do |format|
       if @item.save
@@ -61,6 +69,7 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1
   # PATCH/PUT /items/1.json
   def update
+    @item.category_id = params[:category_id]
     respond_to do |format|
       if @item.update(item_params)
         format.html { redirect_to @item, notice: 'Item was successfully updated.' }
@@ -93,7 +102,7 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :price, :description, :avatar, :quantity)
+      params.require(:item).permit(:name, :price, :description, :avatar, :quantity, :category_id)
     end
 
 

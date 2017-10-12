@@ -5,6 +5,7 @@ class Item < ApplicationRecord
   has_and_belongs_to_many :purchases
   has_many :users, through: :purchases
   has_many :reviews
+  belongs_to :category
 
 
   def to_param
