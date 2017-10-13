@@ -6,13 +6,20 @@
 - if flash[:notice]
   .alert-box= notice
 
-- @items.each do |item|
-  %p.items-index
-    = image_tag item.avatar(:medium)
-    %br
-    = link_to item.description, item
-    %br
-    $
-    = sprintf "%.2f", item.price
-    %br
-%br/
+%h1.current-category
+  = params[:category]
+
+- if @items.count == 0
+  %h2
+    There are no items in that category.
+-else
+  - @items.each do |item|
+    %p.items-index
+      = image_tag item.avatar(:medium)
+      %br
+      = link_to item.description, item
+      %br
+      $
+      = sprintf "%.2f", item.price
+      %br
+  %br/

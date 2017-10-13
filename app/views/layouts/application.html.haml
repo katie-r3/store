@@ -22,20 +22,12 @@
                 %i.fi-play-video
                 Store
 
-          %li.dropdown
-            %a{"aria-controls" => "drop1", "aria-expanded" => "false", "data-dropdown" => "drop1"}
-              Categories
-            %ul#drop1.f-dropdown{"aria-hidden" => "true", "data-dropdown-content" => "", :tabindex => "-1"}
-              - Category.all.each do |category|
-                %li{:class => "#{'active' if params[:category] == category.name}"}
-                  = link_to category.name, items_path(category: category.name), class: "link"
-
-
           %li.search-bar
             %i.fi-play-video
               = form_tag(items_path, :method => "get", id: "search-form") do
                 = text_field_tag :search, params[:search], placeholder: "Search Items"
                 = submit_tag "Search", :name => nil, class: "search-button"
+
           %li.toggle-topbar
             %a{:href => "#"}
               %span Menu
@@ -73,6 +65,13 @@
               %li= link_to "Login", new_user_session_path
 
 
+    .dropdown
+      %a{"aria-controls" => "drop1", "aria-expanded" => "false", "data-dropdown" => "drop1"}
+        Categories
+      %ul#drop1.f-dropdown{"aria-hidden" => "true", "data-dropdown-content" => "", :tabindex => "-1"}
+        - Category.all.each do |category|
+          %li{:class => "#{'active' if params[:category] == category.name}"}
+            = link_to category.name, items_path(category: category.name), class: "link"
 
 
 
