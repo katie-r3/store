@@ -1,21 +1,21 @@
 .item-show-info
   - if flash[:notice]
     .alert-box= notice
-  %p
+  %h4
     %strong Item:
     = @item.name
-  %p
+  %h4
     %strong Price:
     $
     = sprintf "%.2f", @item.price
-  %p
+  %h4
     %strong Description:
     = @item.description
 
-  %p.image
+  %h4.image
     = image_tag @item.avatar(:medium)
 
-  %p
+  %h4
     %strong Left in Stock:
     = @item.quantity
 
