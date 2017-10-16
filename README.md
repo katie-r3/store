@@ -28,3 +28,5 @@ Some future fixes/ideas:
 * Users are prevented from adding more than the current quantity of an item
 
 * Users can only leave one review per item
+
+* Users can sort the items by category

@@ -66,7 +66,7 @@
 
 
       .dropdown
-        %a{"aria-controls" => "drop1", "aria-expanded" => "false", "data-dropdown" => "drop1"}
+        %a#category-dropdown{"aria-controls" => "drop1", "aria-expanded" => "false", "data-dropdown" => "drop1"}
           Categories
         %ul#drop1.f-dropdown{"aria-hidden" => "true", "data-dropdown-content" => "", :tabindex => "-1"}
           - Category.all.each do |category|
