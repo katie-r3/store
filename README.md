@@ -11,7 +11,7 @@ Created using:
 
 * Redis
 
-* MySql
+* MySQL
 
 * Stripe (for receiving payments) - to run a mock payment, enter '4242 4242 4242 4242' and any future expiration date and 3 digit security code you like.
 

@@ -89,10 +89,6 @@ class User < ApplicationRecord
     items.include?(item)
   end
 
-  def wish_list_count
-    $redis.llen "wish_list#{id}"
-  end
-
   private
 
   def address_verification
