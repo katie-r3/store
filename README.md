@@ -15,7 +15,7 @@ Created using:
 
 * Stripe (for receiving payments) - to run a mock payment, enter '4242 4242 4242 4242' and any future expiration date and 3 digit security code you like.
 
-* Lob (for verifying user's address upon sign up) - for it to work properly a live api key is required, which is not free. So this feature doesn't currently work
+* Lob (for verifying user's address upon sign up) - for it to work properly a live api key is required, which is not free. This feature doesn't currently work
 
 Some future fixes/ideas:
 
@@ -23,7 +23,7 @@ Some future fixes/ideas:
 
 * Mailer sends email when purchase is complete, but the email doesn't show what the user bought or how much was spent
 
-* Mailer also emails when inventory is at 0.
+* Mailer emails when inventory is at 0.
 
 * Users are prevented from adding more than the current quantity of an item
 

@@ -3,3 +3,5 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $('.alert-box').fadeOut 5000
+
+$('.alert').fadeOut 9000
