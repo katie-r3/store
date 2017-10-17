@@ -14,10 +14,11 @@
           = image_tag item.avatar(:medium)
           - 2.times do
             %br
-            
+
         %br
-        = link_to "" , id: "add-button" , class: "add-to-cart", data: {targetUrl: add_to_cart_path(item)} do
-          Add More
+        - if item.quantity > 0 && current_user.no_more?
+          = link_to "" , id: "add-button" , class: "add-to-cart", data: {targetUrl: add_to_cart_path(item)} do
+            Add More
         %br
         = link_to "" , id: "remove-button" , class: "remove", data: {targetUrl: remove_from_cart_path(item)} do
           Remove
