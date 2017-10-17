@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
       end
     else
       @category_id = Category.find_by(name: params[:category]).id
-      @items = Item.where(:category_id => @category_id).order("created_at DESC")
+      @items = Item.where(:category_id => @category_id).order("price ASC")
     end
   end
 
