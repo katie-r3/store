@@ -12,7 +12,7 @@ class User < ApplicationRecord
   validates_length_of :zipcode, :is => 5
   validates :zipcode, presence: true
 
-  validate :address_verification
+  # validate :address_verification
 
   before_save :uppercase_state
   before_save :uppercase_name
@@ -89,24 +89,24 @@ class User < ApplicationRecord
     items.include?(item)
   end
 
-  private
-
-  def address_verification
-  lob = Lob::Client.new(api_key: "test_8bf028b29ac1c2c97ce7e85d57d96d51feb")
-
-  address = lob.us_verifications.verify(
-    primary_line: self.address_line1,
-    secondary_line: self.address_line2,
-    city: self.city,
-    state: self.state,
-    zip_code: self.zipcode,
-  )
-
-  if address["deliverability"] != "deliverable"
-    errors.add("This address is not deliverable: ", address["deliverability"])
-  end
-
-end
+#   private
+#
+#   def address_verification
+#   lob = Lob::Client.new(api_key: "test_8bf028b29ac1c2c97ce7e85d57d96d51feb")
+#
+#   address = lob.us_verifications.verify(
+#     primary_line: self.address_line1,
+#     secondary_line: self.address_line2,
+#     city: self.city,
+#     state: self.state,
+#     zip_code: self.zipcode,
+#   )
+#
+#   if address["deliverability"] != "deliverable"
+#     errors.add("This address is not deliverable: ", address["deliverability"])
+#   end
+#
+# end
 
 
 end

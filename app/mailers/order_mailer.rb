@@ -3,7 +3,7 @@ class OrderMailer < ApplicationMailer
 
   def order_status(user, purchase)
     @user = user
-    @purchase = purchase.items
+    @purchase = purchase
     @url = 'http://intense-spire-74031.herokuapp.com/'
     mail(to: @user.email, subject: 'Your order has shipped!')
   end

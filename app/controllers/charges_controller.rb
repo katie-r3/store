@@ -43,5 +43,4 @@ class ChargesController < ApplicationController
   def thanks
   end
 
-
 end
