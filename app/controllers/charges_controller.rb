@@ -20,10 +20,10 @@ class ChargesController < ApplicationController
 
     charge = StripeTool.create_charge(customer_id: customer.id, amount: @amount, description: 'Rails Stripe Customer')
 
-    @purchase = Purchase.create(user_id: current_user.id, amount: create_amount, items: current_user.get_cart_items)
+    @purchase = Purchase.create(user_id: current_user.id, amount: create_amount, items: current_user.get_cart_items, ordered: true)
 
     UserMailer.order_email(current_user).deliver_now
-    
+
     if !current_user.no_more?
       InventoryMailer.inventory_email(@item).deliver_now
     end

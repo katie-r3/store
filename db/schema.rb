@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171012213957) do
+ActiveRecord::Schema.define(version: 20171018164550) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
@@ -50,7 +50,6 @@ ActiveRecord::Schema.define(version: 20171012213957) do
     t.datetime "avatar_updated_at"
     t.integer "purchase_id"
     t.integer "quantity"
-    t.string "slug"
     t.integer "category_id"
   end
 
@@ -66,30 +65,8 @@ ActiveRecord::Schema.define(version: 20171012213957) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "amount", limit: 24
-  end
-
-  create_table "rates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "rater_id"
-    t.string "rateable_type"
-    t.bigint "rateable_id"
-    t.float "stars", limit: 24, null: false
-    t.string "dimension"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["rateable_type", "rateable_id"], name: "index_rates_on_rateable_type_and_rateable_id"
-    t.index ["rater_id"], name: "index_rates_on_rater_id"
-  end
-
-  create_table "rating_caches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "cacheable_type"
-    t.bigint "cacheable_id"
-    t.float "avg", limit: 24, null: false
-    t.integer "qty", null: false
-    t.string "dimension"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type"
-    t.index ["cacheable_type", "cacheable_id"], name: "index_rating_caches_on_cacheable_type_and_cacheable_id"
+    t.boolean "shipped", default: false
+    t.boolean "ordered", default: false
   end
 
   create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -99,11 +76,6 @@ ActiveRecord::Schema.define(version: 20171012213957) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "item_id"
-  end
-
-  create_table "slugs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -121,12 +93,12 @@ ActiveRecord::Schema.define(version: 20171012213957) do
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
     t.string "state"
-    t.string "zipcode"
-    t.string "first_name"
-    t.string "last_name"
     t.string "address_line1"
     t.string "address_line2"
     t.string "city"
+    t.string "zipcode"
+    t.string "first_name"
+    t.string "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

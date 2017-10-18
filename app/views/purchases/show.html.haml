@@ -19,8 +19,13 @@
       %br
       = image_tag item.avatar(:medium)
 
+    - if @purchase.ordered? && !@purchase.shipped?
+      %h4 Order Status: Ordered
+    - elsif @purchase.ordered? && @purchase.shipped?
+      - OrderMailer.order_status(current_user, @purchase).deliver_now
+      %h4 Order Status: Shipped!
+
     %h5#past-purchase
-      Want to leave a
+      Want to
       = link_to "review", new_item_review_path(item)
-      ?
-      
+      this item?

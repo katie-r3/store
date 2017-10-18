@@ -4,7 +4,9 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
   %body
     %h1
-      Thank you for your order at the store, #{@user.first_name} !
+      Your order has shipped, #{@user.first_name} !
+    %h2
+      @purchase
 
     %p
       To login to the site, just follow this link: #{@url}.
