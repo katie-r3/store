@@ -1,5 +1,5 @@
 = simple_form_for([@item, @item.reviews.build]) do |f|
   #rating-form
     = f.label :rating
-  = f.input :comment
-  = f.submit
+  .large-6.columns= f.input :comment
+  .large-12.columns= f.submit
