@@ -11,4 +11,13 @@
     = @item.name
   %p#review-item-image
     = image_tag @item.avatar(:thumb)
-  = render @item.reviews
+
+  - @item.reviews.each do |review|
+    .all-ratings
+      .review-rating{ 'data-score': review.rating }
+      = simple_format(review.comment)
+      - if user_signed_in?
+        - if review.user_id == current_user.id
+          = link_to "Edit", edit_item_review_path(review.item, review)
+          ||
+          = link_to "Delete", item_review_path(review.item, review), method: :delete, data: { confirm: "Are you sure?" }

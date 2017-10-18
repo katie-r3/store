@@ -60,6 +60,8 @@ gem 'lob'
 
 gem 'figaro'
 
+gem 'wraptext'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
