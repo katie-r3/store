@@ -33,7 +33,11 @@
               %span Menu
         %section.top-bar-section
           %ul.right
-            - if signed_in? && current_user.admin == true
+            - if current_user.nil?
+              %li= link_to "Register", new_user_registration_path
+              %li= link_to "Login", new_user_session_path
+              
+            - elsif signed_in? && current_user.admin == true
               %li
                 = link_to cart_path do
 
@@ -60,9 +64,7 @@
               %li= link_to current_user.email, edit_user_registration_path
               %li= link_to "Logout", destroy_user_session_path, method: :delete
 
-            - elsif current_user.nil?
-              %li= link_to "Register", new_user_registration_path
-              %li= link_to "Login", new_user_session_path
+
 
 
       .dropdown

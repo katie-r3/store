@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :find_item
   before_action :find_review, only: [:edit, :update, :destroy]
-  before_action :signed_in?
+  before_action :signed_in?, only: [:edit, :create, :update, :destroy]
 
   def signed_in?
     if current_user.nil?
