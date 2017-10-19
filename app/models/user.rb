@@ -14,17 +14,21 @@ class User < ApplicationRecord
 
   # validate :address_verification
 
-  # before_save :uppercase_state
-  # before_save :uppercase_name
+  before_save :uppercase_state
+  before_save :uppercase_name
 
 
   def uppercase_state
-    state.upcase!
+    if Current.user
+      state.upcase!
+    end
   end
 
   def uppercase_name
-    first_name.capitalize!
-    last_name.capitalize!
+    if Current.user
+      first_name.capitalize!
+      last_name.capitalize!
+    end
   end
 
   def full_name

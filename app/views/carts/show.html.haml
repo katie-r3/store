@@ -105,7 +105,8 @@
 
 - else
   #totals-guest.column.large-3.primary-bg.text-center.radius-r1{"data-equalizer-watch" => ""}
-    #signup-guest-cart= link_to "Sign up", new_user_registration_path
-    OR
-    #login-guest-cart= link_to "Login", new_user_session_path
-    to checkout!
+    - unless guest_user.cart_count.zero?
+      #signup-guest-cart= link_to "Sign up", new_user_registration_path
+      OR
+      #login-guest-cart= link_to "Login", new_user_session_path
+      to checkout!

@@ -30,3 +30,5 @@ Some future fixes/ideas:
 * Users can only leave one review per item
 
 * Users can sort the items by category
+
+* User can add items to their cart without being logged in, to checkout they must then signup or login
