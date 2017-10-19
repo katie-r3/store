@@ -8,7 +8,7 @@
     %strong Price:
     $
     = sprintf "%.2f", @item.price
-    
+
   %h4
     %strong Description:
     = @item.description
@@ -28,15 +28,27 @@
     ||
     = link_to 'Edit', edit_item_path(@item)
 
-  #item-button
-    - if signed_in? && @item.quantity > 0 && current_user.no_more?
-      = link_to "", id: "add-button" , class: "button", data: {target: @cart_action, addUrl: add_to_cart_path(@item), anotherUrl: add_to_cart_path(@item)} do
-        %span= @cart_action
-        Cart
+  - if current_user
+    #item-button
+      - if signed_in? && @item.quantity > 0 && current_user.no_more?
+        = link_to "", id: "add-button" , class: "button", data: {target: @cart_action, addUrl: add_to_cart_path(@item), anotherUrl: add_to_cart_path(@item)} do
+          %span= @cart_action
+          Cart
 
-    - if signed_in? && current_user.get_cart_items.include?(@item)
-      = link_to "" , id: "remove-button" , class: "remove", data: {targetUrl: remove_from_cart_path(@item)} do
-        Remove
+      - if signed_in? && current_user.get_cart_items.include?(@item)
+        = link_to "" , id: "remove-button" , class: "remove", data: {targetUrl: remove_from_cart_path(@item)} do
+          Remove
+
+  - else
+    #item-button
+      - if @item.quantity > 0 && guest_user.no_more?
+        = link_to "", id: "add-button" , class: "button", data: {target: @guest_cart_action, addUrl: add_to_cart_path(@item), anotherUrl: add_to_cart_path(@item)} do
+          %span= @guest_cart_action
+          Cart
+
+      - if guest_user.get_cart_items.include?(@item)
+        = link_to "" , id: "remove-button" , class: "remove", data: {targetUrl: remove_from_cart_path(@item)} do
+          Remove
 
 
   %h4 Average Rating

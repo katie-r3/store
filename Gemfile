@@ -62,6 +62,8 @@ gem 'figaro'
 
 gem 'wraptext'
 
+gem 'devise-guests'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

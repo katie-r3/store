@@ -18,6 +18,12 @@ class Item < ApplicationRecord
     end
   end
 
+  def guest_cart_action(guest_user)
+    if guest_user
+      "Add to"
+    end
+  end
+
 
   def self.search(search)
     where("name LIKE ? OR description LIKE ?", "%#{search}", "%#{search}")

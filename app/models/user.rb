@@ -14,8 +14,8 @@ class User < ApplicationRecord
 
   # validate :address_verification
 
-  before_save :uppercase_state
-  before_save :uppercase_name
+  # before_save :uppercase_state
+  # before_save :uppercase_name
 
 
   def uppercase_state

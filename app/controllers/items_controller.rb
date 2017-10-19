@@ -31,6 +31,7 @@ class ItemsController < ApplicationController
   # GET /items/1.json
   def show
     @cart_action = @item.cart_action current_user.try :id
+    @guest_cart_action = @item.guest_cart_action guest_user.try :id
     if @item.reviews.blank?
       @average_review = 0
     else
