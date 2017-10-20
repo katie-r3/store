@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  skip_before_action :verify_authenticity_token, :only => [:current_or_guest_user]
   before_action :configure_permitted_parameters, if: :devise_controller?
   around_action :set_current_user
 
@@ -37,12 +38,15 @@ class ApplicationController < ActionController::Base
     guest_user if with_retry
   end
 
-
   private
 
   def logging_in
-    guest_cart = current_guest_cart
-    current_guest_cart = current_user_cart
+    guest_cart_ids = $redis.lrange guest_user_cart, 0, 100
+    @guest_cart_items = Item.find(guest_cart_ids)
+    @guest_cart_items.each do |item|
+      $redis.lpush current_user_cart, params[:item_id]
+      render json: current_user.cart_count, status: 200
+    end
   end
 
   def create_guest_user

@@ -2,10 +2,10 @@ class CartsController < ApplicationController
 
   def show
     if current_user
-      cart_ids = $redis.lrange current_user_cart, -100, 100
+      cart_ids = $redis.lrange current_user_cart, 0, 100
       @cart_items = Item.find(cart_ids)
     else
-      guest_cart_ids = $redis.lrange guest_user_cart, -100, 100
+      guest_cart_ids = $redis.lrange guest_user_cart, 0, 100
       @guest_cart_items = Item.find(guest_cart_ids)
     end
   end
