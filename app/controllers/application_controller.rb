@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
     render :file => 'public/404.html', :status => :not_found, :layout => false
   end
 
+  helper_method :current_or_guest_user
 
   def set_current_user
     Current.user = current_user
@@ -38,19 +39,19 @@ class ApplicationController < ActionController::Base
     guest_user if with_retry
   end
 
+
   private
 
   def logging_in
-    guest_cart_ids = $redis.lrange guest_user_cart, 0, 100
+    guest_cart_ids = $redis.lrange "cart#{guest_user.id}", 0, 100
     @guest_cart_items = Item.find(guest_cart_ids)
     @guest_cart_items.each do |item|
-      $redis.lpush current_user_cart, params[:item_id]
-      render json: current_user.cart_count, status: 200
+      $redis.lpush "cart#{current_user.id}", item.id
     end
   end
 
   def create_guest_user
-    u = User.new(:email => "guest_#{Time.now.to_i}#{rand(100)}@example.com")
+    u = User.new(:email => "guest_#{Time.now.to_i}#{rand(100)}@example.com", guest: true)
     u.save!(:validate => false)
     session[:guest_user_id] = u.id
     u

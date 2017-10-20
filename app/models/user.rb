@@ -20,14 +20,14 @@ class User < ApplicationRecord
 
   def uppercase_state
     if Current.user
-      state.upcase!
+      Current.user.state.upcase!
     end
   end
 
   def uppercase_name
     if Current.user
-      first_name.capitalize!
-      last_name.capitalize!
+      Current.user.first_name.capitalize!
+      Current.user.last_name.capitalize!
     end
   end
 
