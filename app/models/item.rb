@@ -1,4 +1,8 @@
 class Item < ApplicationRecord
+  searchable do
+    text :name
+    text :description
+  end
   has_attached_file :avatar, styles: { medium: "300x300#", thumb: "100x100>" }, default_url: "no-image-icon-15.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
@@ -24,9 +28,8 @@ class Item < ApplicationRecord
     end
   end
 
-
   def self.search(search)
-    where("name LIKE ? OR description LIKE ?", "%#{search}", "%#{search}")
+    where("name LIKE ? OR description LIKE ?", "%#{search}%", "%#{search}%")
   end
 
 
