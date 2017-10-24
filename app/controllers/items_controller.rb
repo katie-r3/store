@@ -21,13 +21,6 @@ class ItemsController < ApplicationController
       else
         @items = Item.all.order("created_at DESC")
       end
-    # else
-    #   if params[:search]
-    #     @search = Item.search do
-    #       fulltext params[:search]
-    #     end
-    #   @items = @search.results
-    # end
     else
       @category_id = Category.find_by(name: params[:category]).id
       @items = Item.where(:category_id => @category_id).order("price ASC")
