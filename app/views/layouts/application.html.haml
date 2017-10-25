@@ -58,7 +58,7 @@
               %li= link_to "Logout", destroy_user_session_path, method: :delete
               %li= link_to "Admin Dashboard", "/cms"
 
-            - elsif signed_in?
+            - else
               %li
                 = link_to cart_path do
 
