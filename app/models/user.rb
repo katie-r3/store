@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :reviews
 
   validates :state, length: { maximum: 2 }, presence: true
-  validates :first_name, :last_name, :address_line1, :city, length: { minimum: 2 }, presence: true
+  validates :email, :first_name, :last_name, :address_line1, :city, length: { minimum: 2 }, presence: true
   validates_length_of :zipcode, :is => 5
   validates :zipcode, presence: true
 

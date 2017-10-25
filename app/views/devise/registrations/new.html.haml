@@ -29,15 +29,13 @@
       %br/
       = f.input :zipcode
     .field
-      = f.label :password
       - if @minimum_password_length
         %em
           (#{@minimum_password_length} characters minimum)
       %br/
-      = f.password_field :password, autocomplete: "off"
+      = f.input :password
     .field
-      = f.label :password_confirmation
-      = f.password_field :password_confirmation, autocomplete: "off"
+      = f.input :password_confirmation
     .actions
       = f.submit "Sign up", class: "submit-buttons"
   %p Already have an account?
