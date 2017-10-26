@@ -60,6 +60,11 @@ class User < ApplicationRecord
     Item.find(cart_ids)
   end
 
+  def get_cart_items
+    cart_ids = $redis.lrange "cart#{id}", 0, 100
+    Item.find(cart_ids)
+  end
+
   def get_quantity(item)
     ids = $redis.lrange "cart#{id}", 0, 100 # => ["2", "1"]
     ids.each do |id|

@@ -13,11 +13,10 @@
  *= require_tree .
  *= require_self
  *= require jquery-ui
- *= require foundation_and_overrides
  */
 
 @import url(https://fonts.googleapis.com/css?family=Asap+Condensed|IM+Fell+Great+Primer);
-
+@import "bootstrap";
 
 body {
   background-color: #E8E8EE;
@@ -95,8 +94,6 @@ h1.items_header {
   margin-top: 45px;
   margin-bottom: 35px;
 }
-
-
 
 .search-empty {
   margin-left: 800px;
@@ -383,18 +380,34 @@ body, h1, h2, h3, h4 .button {
 
 .dropdown {
   background-color: #FFFF7F;
-  float: right;
-  margin-right: 25px;
-  margin-top: 5px;
-  padding: 8px;
   border-radius: 15px;
   border: solid 1px black;
+}
+
+#totals-guest {
+  font-size: 20px;
+}
+
+.navbar-inverse {
+  background-color: #2f2f2f;
+}
+
+a.navbar-brand {
+  color: #fff;
+}
+
+.nav-item {
+  margin: 10px;
+}
+
+li.nav-item a {
+  color: #fff;
 }
 
 #category-dropdown {
   color: #19198c;
 }
 
-#totals-guest {
-  font-size: 20px;
+#drop1 a {
+  color: #19198c !important;
 }

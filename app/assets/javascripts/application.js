@@ -13,11 +13,12 @@
 //= require jquery2
 //= require jquery-ui
 //= require jquery.raty
-//= require foundation
+//= require popper
+//= require bootstrap
 //= require rails-ujs
 //= require_tree .
 
-$(function(){ $(document).foundation();
+$(function(){
   $('.review-rating').raty({
     readOnly: true,
     score: function() {

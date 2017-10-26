@@ -13,76 +13,65 @@
 
     = csrf_meta_tags
   %body
-    .row
-      %nav.top-bar.column{"data-topbar" => ""}
-        %ul.title-area
-          %li.name
-            %h1
-              %a{:href => "/"}
-                %i.fi-play-video
-                Store
+    %nav.navbar.navbar-inverse
+      .container
+        .navbar-header
+          %a{:class => "navbar-brand", :href => "/"}
+            Store
 
-          %li.search-bar
-            %i.fi-play-video
-              = form_tag(items_path, :method => "get", id: "search-form") do
-                = text_field_tag :search, params[:search], placeholder: "Search Items"
-                = submit_tag "Search", :name => nil, class: "search-button"
+        %ul.navbar.nav
+          %li.nav-item.dropdown
+            %a#category-dropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", "href"=>"#"}
+              Search by Category
+              %span.caret
+            %ul#drop1.dropdown-menu{"role"=>"menu"}
+              - Category.all.each do |category|
+                %li{:class => "#{'active' if params[:category] == category.name}"}
+                  = link_to category.name, items_path(category: category.name), class: "link"
 
-          %li.toggle-topbar
-            %a{:href => "#"}
-              %span Menu
-        %section.top-bar-section
-          %ul.right
-            - if current_user.nil?
-              %li= link_to "Register", new_user_registration_path
-              %li= link_to "Login", new_user_session_path
-              %li
-                = link_to cart_path do
+        %ul.navbar.nav#main-menu
+          - if current_user.nil?
+            %li.nav-item= link_to "Register", new_user_registration_path
+            %li.nav-item= link_to "Login", new_user_session_path
+            %li.nav-item
+              = link_to cart_path do
 
-                  Guest Cart
-                  (
-                  %span.cart-count>= guest_user.cart_count
-                  )
+                Guest Cart
+                (
+                %span.cart-count>= guest_user.cart_count
+                )
 
-            - elsif signed_in? && current_user.admin == true
-              %li
-                = link_to cart_path do
+          - elsif signed_in? && current_user.admin == true
+            %li.nav-item
+              = link_to cart_path do
 
-                  My Cart
-                  (
-                  %span.cart-count>= current_user.cart_count
-                  )
+                My Cart
+                (
+                %span.cart-count>= current_user.cart_count
+                )
 
-              %li= link_to "Past Purchases", user_purchases_path
-              %li= link_to current_user.email, edit_user_registration_path
-              %li= link_to "Logout", destroy_user_session_path, method: :delete
-              %li= link_to "Admin Dashboard", "/cms"
+            %li.nav-item= link_to "Past Purchases", user_purchases_path
+            %li.nav-item= link_to current_user.email, edit_user_registration_path
+            %li.nav-item= link_to "Logout", destroy_user_session_path, method: :delete
+            %li.nav-item= link_to "Admin Dashboard", "/cms"
 
-            - else
-              %li
-                = link_to cart_path do
+          - else
+            %li.nav-item
+              = link_to cart_path do
 
-                  My Cart
-                  (
-                  %span.cart-count>= current_user.cart_count
-                  )
+                My Cart
+                (
+                %span.cart-count>= current_user.cart_count
+                )
 
-              %li= link_to "Past Purchases", user_purchases_path
-              %li= link_to current_user.email, edit_user_registration_path
-              %li= link_to "Logout", destroy_user_session_path, method: :delete
+            %li.nav-item= link_to "Past Purchases", user_purchases_path
+            %li.nav-item= link_to current_user.email, edit_user_registration_path
+            %li.nav-item= link_to "Logout", destroy_user_session_path, method: :delete
+            %li.navbar.nav
 
-
-
-
-      .dropdown
-        %a#category-dropdown{"aria-controls" => "drop1", "aria-expanded" => "false", "data-dropdown" => "drop1"}
-          Search by Category
-        %ul#drop1.f-dropdown{"aria-hidden" => "true", "data-dropdown-content" => "", :tabindex => "-1"}
-          - Category.all.each do |category|
-            %li{:class => "#{'active' if params[:category] == category.name}"}
-              = link_to category.name, items_path(category: category.name), class: "link"
-
-
+    = form_tag(items_path, :method => "get", id: "search-form") do
+      = text_field_tag :search, params[:search], placeholder: "Search Items"
+      = submit_tag "Search", :name => nil, class: "search-button"
 
     .content
 
