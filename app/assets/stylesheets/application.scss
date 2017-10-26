@@ -93,6 +93,13 @@ h1.items_header {
 #totals {
   margin-top: 45px;
   margin-bottom: 35px;
+  float: right;
+}
+
+#totals-guest {
+  margin: 25px;
+  float: right;
+  font-size: 20px;
 }
 
 .search-empty {
@@ -296,6 +303,7 @@ h3.review-header {
 	text-decoration:none;
 	text-shadow:0px -1px 0px #2b665e;
   margin: 8px;
+  margin-top: 50px;
 }
 
 body, h1, h2, h3, h4 .button {
@@ -384,10 +392,6 @@ body, h1, h2, h3, h4 .button {
   border: solid 1px black;
 }
 
-#totals-guest {
-  font-size: 20px;
-}
-
 .navbar-inverse {
   background-color: #2f2f2f;
 }
@@ -410,4 +414,8 @@ li.nav-item a {
 
 #drop1 a {
   color: #19198c !important;
+}
+
+#basic-item-info {
+  margin-top: 55px;
 }

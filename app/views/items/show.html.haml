@@ -1,65 +1,73 @@
 .item-show-info
   - if flash[:notice]
-    .alert-box= notice
-  %h4
-    %strong Item:
-    = @item.name
-  %h4
-    %strong Price:
-    $
-    = sprintf "%.2f", @item.price
+    .alert.alert-info= notice
+  .container
+    .row
+      .col-12#basic-item-info
+        %h4
+          %strong Item:
+          = @item.name
+        %h4
+          %strong Price:
+          $
+          = sprintf "%.2f", @item.price
 
-  %h4
-    %strong Description:
-    = @item.description
+        %h4
+          %strong Description:
+          = @item.description
 
-  %h4.image
-    = image_tag @item.avatar(:medium)
+        %h4.image
+          = image_tag @item.avatar(:medium)
 
-  %h4
-    %strong Left in Stock:
-    = @item.quantity
-
-
-.item-show-links
-  = link_to 'Back', items_path
-
-  - if current_user && current_user.admin?
-    ||
-    = link_to 'Edit', edit_item_path(@item)
-
-  - if current_user
-    #item-button
-      - if signed_in? && @item.quantity > 0 && current_user.no_more?
-        = link_to "", id: "add-button" , class: "button", data: {target: @cart_action, addUrl: add_to_cart_path(@item), anotherUrl: add_to_cart_path(@item)} do
-          %span= @cart_action
-          Cart
-
-      - if signed_in? && current_user.get_cart_items.include?(@item)
-        = link_to "" , id: "remove-button" , class: "remove", data: {targetUrl: remove_from_cart_path(@item)} do
-          Remove
-
-  - else
-    #item-button
-      - if @item.quantity > 0 && guest_user.no_more?
-        = link_to "", id: "add-button" , class: "button", data: {target: @guest_cart_action, addUrl: add_to_cart_path(@item), anotherUrl: add_to_cart_path(@item)} do
-          %span= @guest_cart_action
-          Cart
-
-      - if guest_user.get_cart_items.include?(@item)
-        = link_to "" , id: "remove-button" , class: "remove", data: {targetUrl: remove_from_cart_path(@item)} do
-          Remove
+        %h4
+          %strong Left in Stock:
+          = @item.quantity
 
 
-  %h4 Average Rating
-  .average-review-rating{ 'data-score': @average_review }
-  %span Based on
-  = link_to @item.reviews.count, item_reviews_path(@item)
-  reviews
+          .item-show-links
+            = link_to 'Back', items_path
+
+            - if current_user && current_user.admin?
+              ||
+              = link_to 'Edit', edit_item_path(@item)
+
+  .row
+    - if current_user
+      #item-button
+        .col-6
+        - if signed_in? && @item.quantity > 0 && current_user.no_more?
+          = link_to "", id: "add-button" , class: "button", data: {target: @cart_action, addUrl: add_to_cart_path(@item), anotherUrl: add_to_cart_path(@item)} do
+            %span= @cart_action
+            Cart
+
+        - if signed_in? && current_user.get_cart_items.include?(@item)
+          = link_to "" , id: "remove-button" , class: "remove", data: {targetUrl: remove_from_cart_path(@item)} do
+            Remove
+
+    - else
+      #item-button
+        .col-6
+        - if @item.quantity > 0 && guest_user.no_more?
+          = link_to "", id: "add-button" , class: "button", data: {target: @guest_cart_action, addUrl: add_to_cart_path(@item), anotherUrl: add_to_cart_path(@item)} do
+            %span= @guest_cart_action
+            Cart
+
+        - if guest_user.get_cart_items.include?(@item)
+          = link_to "" , id: "remove-button" , class: "remove", data: {targetUrl: remove_from_cart_path(@item)} do
+            Remove
+
+    .col-6
+      %h4 Average Rating
+      .average-review-rating{ 'data-score': @average_review }
+      %span Based on
+      = link_to @item.reviews.count, item_reviews_path(@item)
+      reviews
 
   %br
   %br
 
-  - if signed_in?
-    #add-review-button
-      = link_to "Add Review", new_item_review_path(@item)
+  .row
+    .col
+      - if signed_in?
+        #add-review-button
+          = link_to "Add Review", new_item_review_path(@item)
