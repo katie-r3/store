@@ -1,47 +1,48 @@
 #signup-form
   %h2 Sign up
   = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = f.error_notification
     .field
       %br/
-      = f.input :email, autofocus: true
+      = f.input :email, autofocus: true, :error_html => { :class => "field_with_errors" }
     .field
       %br/
-      = f.input :first_name
+      = f.input :first_name, :error_html => { :class => "field_with_errors" }
     .field
       %br/
-      = f.input :last_name
+      = f.input :last_name, :error_html => { :class => "field_with_errors" }
     .field
       %br/
       = f.label :address_line1
       %i (your street address)
       %br/
-      = f.input :address_line1, label: false
+      = f.input :address_line1, label: false, :error_html => { :class => "field_with_errors" }
     .field
       %br/
       = f.label :address_line2
       %i (apartment or suite number)
       %br/
-      = f.input :address_line2, label: false
+      = f.input :address_line2
     .field
       %br/
-      = f.input :city
+      = f.input :city, :error_html => { :class => "field_with_errors" }
     .field
       %br/
       = f.label :state
       %i (your state's abbreviation)
       %br/
-      = f.input :state, label: false
+      = f.input :state, label: false, :error_html => { :class => "field_with_errors" }
     .field
       %br/
-      = f.input :zipcode
+      = f.input :zipcode, :error_html => { :class => "field_with_errors" }
     .field
       - if @minimum_password_length
         %em
           (#{@minimum_password_length} characters minimum)
       %br/
-      = f.input :password
+      = f.input :password, :error_html => { :class => "field_with_errors" }
     .field
-      = f.input :password_confirmation
+      = f.input :password_confirmation, :error_html => { :class => "field_with_errors" }
     .actions
       = f.submit "Sign up", class: "submit-buttons"
   %p Already have an account?
