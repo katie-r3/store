@@ -11,20 +11,26 @@
       %br/
       = f.input :last_name
     .field
+      %br/
+      = f.label :address_line1
       %i (your street address)
       %br/
-      = f.input :address_line1
+      = f.input :address_line1, label: false
     .field
+      %br/
+      = f.label :address_line2
       %i (apartment or suite number)
       %br/
-      = f.input :address_line2
+      = f.input :address_line2, label: false
     .field
       %br/
       = f.input :city
     .field
+      %br/
+      = f.label :state
       %i (your state's abbreviation)
       %br/
-      = f.input :state
+      = f.input :state, label: false
     .field
       %br/
       = f.input :zipcode
