@@ -310,13 +310,18 @@ body, h1, h2, h3, h4 .button {
   font-family: 'Asap Condensed', sans-serif;
 }
 
-#thanks-back, .past-orders, .thanks-page, .user-past-purchase-show, #new-review, #back-item-link, #item-button, #view-purchases {
+#thanks-back, .past-orders, .thanks-page, .user-past-purchase-show {
+  margin-left: 20px;
+}
+
+#new-review, #back-item-link, #item-button, #forgot-password-form, #change-password-form {
   margin-left: 20px;
 }
 
 #view-purchases {
   border-top: dashed 1px black;
   margin-right: 20px;
+  margin-left: 20px;
 }
 
 #past-purchase {
