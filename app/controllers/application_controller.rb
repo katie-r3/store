@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_or_guest_user
 
+
   def set_current_user
     Current.user = current_user
     yield
@@ -43,10 +44,9 @@ class ApplicationController < ActionController::Base
   private
 
   def logging_in
-    guest_cart_ids = $redis.lrange "cart#{guest_user.id}", 0, 100
-    @guest_cart_items = Item.find(guest_cart_ids)
-    @guest_cart_items.each do |item|
-      $redis.lpush "cart#{current_user.id}", item.id
+    guest_cart_ids = $redis.lrange "cart#{guest_user.id}", 0, 100 # => ["2", "1"]
+    guest_cart_ids.each do |item|
+      $redis.lpush "cart#{current_user.id}", item
     end
   end
 

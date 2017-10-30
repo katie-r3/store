@@ -16,6 +16,7 @@ class User < ApplicationRecord
 
   before_save :uppercase_state
   before_save :uppercase_name
+  before_save :uppercase_city
 
 
   def uppercase_state
@@ -28,6 +29,12 @@ class User < ApplicationRecord
     if Current.user
       Current.user.first_name.capitalize!
       Current.user.last_name.capitalize!
+    end
+  end
+
+  def uppercase_city
+    if Current.user
+      Current.user.city.capitalize!
     end
   end
 
@@ -53,11 +60,6 @@ class User < ApplicationRecord
     tax = cart_total_price.to_f * (7.25 / 100)
     total_price = tax + cart_total_price.to_f
     return sprintf("%.2f", total_price)
-  end
-
-  def get_cart_items
-    cart_ids = $redis.lrange "cart#{id}", 0, 100
-    Item.find(cart_ids)
   end
 
   def get_cart_items

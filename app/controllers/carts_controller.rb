@@ -22,10 +22,10 @@ class CartsController < ApplicationController
 
   def remove
     if current_user
-      $redis.lrem current_user_cart, 0, params[:item_id]
+      $redis.lrem current_user_cart, 1, params[:item_id]
       render json: current_user.cart_count, status: 200
     else
-      $redis.lrem guest_user_cart, 0, params[:item_id]
+      $redis.lrem guest_user_cart, 1, params[:item_id]
       render json: guest_user.cart_count, status: 200
     end
   end
