@@ -2,8 +2,8 @@
   - if flash[:notice]
     .alert.alert-info= notice
   .container
-    .row
-      .col-12#basic-item-info
+    .row#basic-item-info
+      .col-12
         %h4
           %strong Item:
           = @item.name
