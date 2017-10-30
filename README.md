@@ -13,13 +13,13 @@ Created using:
 
 * MySQL
 
+* Bootstrap
+
 * Stripe (for receiving payments) - to run a mock payment, enter '4242 4242 4242 4242' and any future expiration date and 3 digit security code you like.
 
 * Lob (for verifying user's address upon sign up) - for it to work properly a live api key is required, which is not free. This feature doesn't currently work
 
 Some future fixes/ideas:
-
-* Styling needs some work
 
 * Mailer sends email when purchase is complete, but the email doesn't show what the user bought or how much was spent
 
@@ -31,4 +31,4 @@ Some future fixes/ideas:
 
 * Users can sort the items by category
 
-* User can add items to their cart without being logged in, to checkout they must then signup or login
+* User can add items to their cart without being logged in, but to checkout they must then signup or login
