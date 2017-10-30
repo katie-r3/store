@@ -1,8 +1,8 @@
 -if flash[:notice]
   .alert.alert-info= notice
 
-%p#back-item-link
-  = link_to "Back to item", item_path(@item)
+%h4#back-item-link
+  = link_to "Back to Item", item_path(@item)
 - if @item.reviews.empty?
   %h2 There are no reviews for this item yet.
 - else
