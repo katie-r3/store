@@ -383,6 +383,11 @@ body, h1, h2, h3, h4 .button {
     width: 70%;
 }
 
+#add-review-button a {
+  text-decoration: none;
+  color: #000;
+}
+
 #review-header, #review-item-name, #review-item-image, #recent-purchases-header {
   text-align: center;
 }
@@ -411,6 +416,7 @@ a.navbar-brand {
 
 li.nav-item a {
   color: #fff;
+  text-decoration: none;
 }
 
 #category-dropdown {
@@ -419,6 +425,7 @@ li.nav-item a {
 
 #drop1 a {
   color: #19198c !important;
+  text-decoration: none;
 }
 
 #basic-item-info {

@@ -56,6 +56,7 @@
           = link_to "" , id: "remove-button" , class: "remove", data: {targetUrl: remove_from_cart_path(@item)} do
             Remove
 
+  .row
     .col-6
       %h4 Average Rating
       .average-review-rating{ 'data-score': @average_review }

@@ -6,5 +6,5 @@
   #rating-form
     = f.label :rating
   = f.label :comment
-  = f.input :comment, label: false, :input_html => {:cols => 80, :rows => 10}
-  = f.submit
+  .col-lg-6= f.input :comment, label: false, :input_html => {:cols => 80, :rows => 10}
+  .col-lg-12= f.submit
