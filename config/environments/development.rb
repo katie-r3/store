@@ -26,7 +26,7 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  Rails.application.routes.default_url_options[:host] = 'domain.com'
+  Rails.application.routes.default_url_options[:host] = 'http://intense-spire-74031.herokuapp.com/'
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_caching = false
   config.action_mailer.perform_deliveries = true
