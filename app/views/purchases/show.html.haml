@@ -10,7 +10,7 @@
     %br
   - @purchase.items.each do |item|
     %h5
-      = link_to "View", item_path(item)
+      = link_to "View Item", item_path(item)
       %br
       $
       = item.price

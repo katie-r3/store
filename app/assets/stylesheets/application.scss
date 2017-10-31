@@ -138,6 +138,10 @@ h3.review-header {
 
 #login-form, #signup-form, #edit-user-form, #new-item-form, #edit-item-form {
   margin: 150px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px 0;
 }
 
 .cart-item {
@@ -443,8 +447,7 @@ li.nav-item a {
 
 @media (max-width: 480px) {
   #basic-item-info h4 {
-    font-size: 12px !important;
-    color: blue !important;
+    font-size: 16px !important;
   }
   #basic-item-info {
     margin-top: 250px;
@@ -453,8 +456,7 @@ li.nav-item a {
 
 @media (max-height: 480px) {
   #basic-item-info h4 {
-    font-size: 14px !important;
-    color: blue !important;
+    font-size: 16px !important;
   }
   #basic-item-info {
     margin-top: 250px;
@@ -464,5 +466,11 @@ li.nav-item a {
 img {
   display: inline-block;
   height: auto;
+  max-width: 100%;
+}
+
+input {
+  height: 35px;
+  border-radius: 3px;
   max-width: 100%;
 }
