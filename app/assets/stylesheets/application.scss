@@ -440,3 +440,29 @@ li.nav-item a {
   background-color: #ff4c4c;
   padding: 3px;
 }
+
+@media (max-width: 480px) {
+  #basic-item-info h4 {
+    font-size: 12px !important;
+    color: blue !important;
+  }
+  #basic-item-info {
+    margin-top: 250px;
+  }
+}
+
+@media (max-height: 480px) {
+  #basic-item-info h4 {
+    font-size: 14px !important;
+    color: blue !important;
+  }
+  #basic-item-info {
+    margin-top: 250px;
+  }
+}
+
+img {
+  display: inline-block;
+  height: auto;
+  max-width: 100%;
+}
