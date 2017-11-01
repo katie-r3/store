@@ -1,8 +1,3 @@
-.search-empty
-  - if @items.blank?
-    %h4 There are no items that match
-    = params[:search]
-
 - if flash[:notice]
   .alert.alert-success= notice
 
@@ -11,7 +6,7 @@
 
 - if @items.count == 0
   %h2
-    There are no items in that category.
+    There are no items that match.
 -else
   - @items.each do |item|
     %p.items-index
