@@ -2,15 +2,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   skip_before_action :verify_authenticity_token, :only => [:current_or_guest_user]
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :store_user_location!, if: :storable_location?
   around_action :set_current_user
+
 
   rescue_from ActiveRecord::RecordNotFound do |e|
     logger.error "Record not found"
     render :file => 'public/404.html', :status => :not_found, :layout => false
   end
-
-  helper_method :current_or_guest_user
-
 
   def set_current_user
     Current.user = current_user
@@ -55,6 +54,14 @@ class ApplicationController < ActionController::Base
     u.save!(:validate => false)
     session[:guest_user_id] = u.id
     u
+  end
+
+  def storable_location?
+    request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
+  end
+
+  def store_user_location!
+    store_location_for(:user, request.fullpath)
   end
 
 
