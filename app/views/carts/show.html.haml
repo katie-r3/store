@@ -108,14 +108,21 @@
                 %span.cart-total ( 7.25% Sales Tax added to California Residents )
               - else
                 = current_user.cart_total_price
+                %span.cart-total ( No sales tax if address outside of CA )
           .col
             %script.stripe-button{"data-amount" => "{ @amount }", "data-description" => "Please complete your purchase", "data-key" => "#{Rails.configuration.stripe[:publishable_key]}", "data-email" => "#{current_user.email}", "data-locale" => "auto", :src => "https://checkout.stripe.com/checkout.js"}
 
 - else
-  #totals-guest.row
-    .col.pull-right
+  .container
+    #guest-total-cart.row
       - unless guest_user.cart_count.zero?
-        #signup-guest-cart= link_to "Sign up", new_user_registration_path
-        OR
-        #login-guest-cart= link_to "Login", new_user_session_path
-        to checkout!
+        .col-xs-4#amount-guest
+          %label.amount
+            %span Cart Total: $
+            = guest_user.cart_total_price
+            %span.cart-total ( Sales tax to be added to CA residents )
+        .col-xs-4#links-guest
+          #signup-guest-cart= link_to "Sign up", new_user_registration_path
+          OR
+          #login-guest-cart= link_to "Login", new_user_session_path
+          to checkout!

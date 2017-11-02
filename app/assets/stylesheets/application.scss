@@ -102,10 +102,19 @@ h1.items_header {
   float: right;
 }
 
-#totals-guest {
+#links-guest {
   margin: 25px;
-  float: right;
   font-size: 20px;
+  text-align: center;
+}
+
+#amount-guest {
+  margin: 25px;
+  font-size: 16px;
+}
+
+#guest-total-cart {
+  float: right;
 }
 
 .search-empty {
