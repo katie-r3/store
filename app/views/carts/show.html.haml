@@ -20,7 +20,7 @@
                   - 2.times do
                     %br
               .col
-                - if item.quantity > 0 && current_user.no_more?
+                - if current_user.no_more?
                   = link_to "" , id: "add-button" , class: "add-to-cart", data: {targetUrl: add_to_cart_path(item)} do
                     Add More
                 %br
@@ -65,7 +65,7 @@
                     %br
 
               .col
-                - if item.quantity > 0 && guest_user.no_more?
+                - if guest_user.no_more?
                   = link_to "" , id: "add-button" , class: "add-to-cart", data: {targetUrl: add_to_cart_path(item)} do
                     Add More
                 %br

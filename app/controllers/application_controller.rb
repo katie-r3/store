@@ -64,10 +64,6 @@ class ApplicationController < ActionController::Base
     store_location_for(:user, request.fullpath)
   end
 
-  # def after_sign_in_path_for(resource)
-  #   admin_dashboard
-  # end
-
 
   protected
 

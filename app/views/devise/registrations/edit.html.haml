@@ -39,7 +39,7 @@
           = f.label :password
           %i (leave blank if you don't want to change it)
           %br/
-          = f.input :password, autocomplete: "off", label: false, :error_html => { :class => "field_with_errors" }
+          = f.input :password, autocomplete: "off", label: false
           - if @minimum_password_length
             %em
               = @minimum_password_length
@@ -47,18 +47,20 @@
         .field
           = f.label :password_confirmation
           %br/
-          = f.input :password_confirmation, autocomplete: "off", label: false, :error_html => { :class => "field_with_errors" }
+          = f.input :password_confirmation, autocomplete: "off", label: false
         .field
           %br/
           = f.label :current_password
           %i (we need your current password to confirm your changes)
           %br/
           = f.input :current_password, autocomplete: "off", label: false, :error_html => { :class => "field_with_errors" }
-        .actions
-          = f.submit "Update", class: "submit-buttons"
-        .row
-          .col-xs-4
-            %h3 Cancel my account
-            %p
-              Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "cancel-account"}
-            = link_to "Back", :back
+        .col-xs-4
+          .actions
+            = f.submit "Update", class: "submit-buttons"
+.container
+  .row
+    .col-xs-4
+      %h3 Cancel my account
+      %p
+        Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "cancel-account"}
+      = link_to "Back", :back
