@@ -1,15 +1,19 @@
 - if current_user
   %h3#recent-purchases-header Your Recent Purchases:
-  %table#purchase-table
-    %thead
-      %tr
-        %th Date of Purchase
-        %th Total Amount
-        %th
+  - if current_user.purchases.empty?
+    %h4#no-past-purchases You have no recent purchases
 
-    %tbody
-      - @purchases.each do |purchase|
+  - else
+    %table#purchase-table
+      %thead
         %tr
-          %td= purchase.created_at.strftime("%m/%d/%Y")
-          %td= sprintf "%.2f", purchase.amount
-          %td= link_to "See Details", user_purchase_path(purchase)
+          %th Date of Purchase
+          %th Total Amount
+          %th
+
+      %tbody
+        - @purchases.each do |purchase|
+          %tr
+            %td= purchase.created_at.strftime("%m/%d/%Y")
+            %td= sprintf "%.2f", purchase.amount
+            %td= link_to "See Details", user_purchase_path(purchase)
